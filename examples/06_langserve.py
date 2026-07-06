@@ -1,6 +1,6 @@
 """06 · 服务化（LangServe）
 
-把一条链发布为 HTTP API。需先取消 requirements.txt 中 langserve/fastapi/uvicorn 的注释并安装。
+把一条链发布为 HTTP API。需先安装 requirements.txt 中已启用的 langserve/fastapi/uvicorn 依赖。
 运行：python examples/06_langserve.py
 然后访问 http://localhost:8000/chain/playground 调试，或用 /chain/invoke 调用。
 """
