@@ -1,0 +1,39 @@
+# LangChain 学习项目依赖清单
+# 安装：pip install -r requirements.txt
+
+# ---- 核心框架 ----
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-community>=0.2.0
+
+# ---- 提示词与输出解析 ----
+langchain-core>=0.2.0
+
+# ---- 文档切分与文本处理 ----
+langchain-text-splitters>=0.2.0
+
+# ---- 向量库（入门推荐 Chroma）----
+chromadb>=0.5.0
+# 备选：faiss-cpu>=1.8.0
+
+# ---- 嵌入与分词 ----
+openai>=1.30.0
+tiktoken>=0.7.0
+
+# ---- 环境变量管理 ----
+python-dotenv>=1.0.0
+
+# ---- 可观测性（可选，LangSmith）----
+# langsmith>=0.1.0
+
+# ---- 服务化部署（运行 examples/06_langserve.py 需要）----
+langserve>=0.2.0
+fastapi>=0.110.0
+uvicorn>=0.29.0
+
+# ---- 交互环境 ----
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# ---- 测试（可选）----
+# pytest>=8.0.0
