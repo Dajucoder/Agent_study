@@ -8,11 +8,24 @@
 ### 计划中
 - `examples/07_ollama_local.py`：Ollama 本地模型分支示例
 - `examples/08_qwen.py`：通义千问 + DashScope 示例
-- `docs/COST_AND_LIMITS.md`：成本控制章节
-- `docs/OBSERVABILITY.md`：LangSmith 追踪操作录屏/截图
 - 引入 `pre-commit`（ruff + 提交前格式化）
-- `pyproject.toml` 增加 `[project]` 元数据（待办）
 - 引入 `mkdocs` 文档站点
+- Dockerfile 与 Docker Hub 自动构建
+
+## [0.2.1] - 2026-07-07
+
+### 新增
+- `LICENSE`（MIT）、`CHANGELOG.md`、`CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`SECURITY.md`
+- `pyproject.toml`（项目元数据 + ruff/pytest/coverage 配置）
+- `MANIFEST.in`、`.editorconfig`、`.gitattributes`、`.dockerignore`
+- `.github/CODEOWNERS`、`.github/dependabot.yml`、`.github/release-drafter.yml`、`.github/labeler.yml`、`.github/FUNDING.yml`
+- `.github/ISSUE_TEMPLATE/{config,bug_report,feature_request,documentation}.yml`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `.github/workflows/release.yml`、`label.yml`、`stale.yml`
+- `docs/COST_AND_LIMITS.md`、`docs/OBSERVABILITY.md`、`docs/TROUBLESHOOTING.md`、`docs/ARCHITECTURE.md`、`docs/REFERENCES.md`、`docs/GLOSSARY.md`
+
+### 变更
+- `README.md` 加徽章、目录、进阶文档表格、贡献入口、BibTeX 引用
 
 ## [0.2.0] - 2026-07-07
 
@@ -50,6 +63,7 @@
 - `notebooks/`：7 个 Jupyter 笔记本（0~6）
 - `data/docs/sample.txt`：RAG 练习示例文档
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Dajucoder/Agent_study/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Dajucoder/Agent_study/releases/tag/v0.1.0
