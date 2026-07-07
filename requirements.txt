@@ -14,33 +14,33 @@ langchain-community>=0.3
 
 # ---- 提示词与输出解析 ----
 langchain-core>=1.0
-pydantic>=2.6
+pydantic>=2.13.4
 
 # ---- 文档切分与文本处理 ----
 langchain-text-splitters>=1.0
 
 # ---- 向量库（入门推荐 Chroma）----
-chromadb>=1.0
+chromadb>=1.5.9
 
 # ---- 嵌入与 OpenAI 客户端 ----
 openai>=1.30
 tiktoken>=0.7
 
 # ---- 环境变量管理 ----
-python-dotenv>=1.0
+python-dotenv>=1.2.2
 
 # ---- 可观测性（可选，LangSmith）----
 # 安装：pip install langsmith
 # 在 .env 中设置 LANGCHAIN_TRACING_V2=true 即可启用
 
 # ---- 服务化部署（运行 examples/06_langserve.py 需要）----
-langserve>=0.3
-fastapi>=0.110
-uvicorn>=0.29
+langserve>=0.3.3
+fastapi>=0.139.0
+uvicorn>=0.50.2
 
 # ---- 交互环境 ----
-jupyter>=1.0
-notebook>=7.0
+jupyter>=1.1.1
+notebook>=7.6.0
 
 # ---- 测试（可选）----
 # pip install pytest ruff
