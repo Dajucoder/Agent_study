@@ -1,0 +1,14 @@
+# Issue 模板配置
+# 详细文档：https://docs.github.com/zh/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+
+blank_issues_enabled: false
+contact_links:
+  - name: "📖 阅读文档"
+    url: https://github.com/Dajucoder/Agent_study/blob/main/README.md
+    about: "先看 README + docs/，90% 的问题已在文档里说明"
+  - name: "💬 讨论区"
+    url: https://github.com/Dajucoder/Agent_study/discussions
+    about: "提问、经验分享、想法碰撞"
+  - name: "🔒 报告安全漏洞"
+    url: https://github.com/Dajucoder/Agent_study/security/advisories/new
+    about: "请勿在公开 Issue 报告安全问题"

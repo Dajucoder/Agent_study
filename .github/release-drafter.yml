@@ -1,0 +1,40 @@
+# Release Drafter：根据 PR 标题自动生成发布草稿
+# 详细文档：https://github.com/release-drafter/release-drafter
+
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+version-resolver:
+  major:
+    labels: ["breaking", "major"]
+  minor:
+    labels: ["feat", "minor"]
+  patch:
+    labels: ["fix", "patch", "chore", "docs", "refactor", "test"]
+  default: "patch"
+categories:
+  - title: "🚨 破坏性变更"
+    labels: ["breaking", "major"]
+  - title: "✨ 新功能"
+    labels: ["feat", "enhancement", "minor"]
+  - title: "🐛 修复"
+    labels: ["fix", "bug", "patch"]
+  - title: "📖 文档"
+    labels: ["docs", "documentation"]
+  - title: "♻️ 重构 / 性能"
+    labels: ["refactor", "performance"]
+  - title: "🧪 测试"
+    labels: ["test", "tests"]
+  - title: "🔧 工程化（CI / 依赖 / 配置）"
+    labels: ["chore", "ci", "dependencies", "build"]
+  - title: "🔒 安全"
+    labels: ["security"]
+  - title: "其他"
+    labels: ["*"]
+change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
+template: |
+  # 📦 发布说明
+
+  $CHANGES
+
+  **完整变更**：https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+exclude-labels: ["skip-changelog"]

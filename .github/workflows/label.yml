@@ -1,0 +1,19 @@
+name: Pull Request Labeler
+
+# 自动给 PR 打标签（基于 .github/labeler.yml 配置）
+on:
+  - pull_request_target
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    name: Auto Label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          configuration-path: .github/labeler.yml
+          fail-on-empty: false

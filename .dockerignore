@@ -1,0 +1,55 @@
+# Docker 构建时排除的文件
+
+# 版本控制
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.py[cod]
+*.egg-info
+.eggs
+build
+dist
+*.so
+
+# 虚拟环境
+.venv
+venv
+env
+
+# 敏感信息
+.env
+.env.*
+!.env.example
+
+# 缓存与日志
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+*.log
+
+# 数据（向量库/缓存可能很大）
+data/chroma
+data/cache
+data/uploads
+
+# IDE
+.idea
+.vscode
+.trae
+.DS_Store
+Thumbs.db
+
+# 文档与 CI 元数据
+docs/PROJECT_STRUCTURE.md
+IMPROVEMENT_PLAN.md
+CHANGELOG.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+LICENSE
+Makefile.ps1

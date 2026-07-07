@@ -1,0 +1,11 @@
+# CODEOWNERS：自动指派 Reviewer
+# 详细语法：https://docs.github.com/zh/repositories/creating-and-managing-repository-files/about-code-owners
+
+# 默认 Owner：仓库维护者
+*       @Dajucoder
+
+# 文档/示例的 owner 可以是同一批人
+/docs/       @Dajucoder
+/examples/   @Dajucoder
+/notebooks/  @Dajucoder
+/tests/      @Dajucoder

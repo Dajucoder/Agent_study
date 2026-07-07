@@ -1,0 +1,29 @@
+name: Stale
+
+# 自动关闭长期无活动的 Issue / PR
+# 注意：本项目为个人学习仓库，stale 天数设得比较宽松
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # 每周日 0 点
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 60
+          days-before-close: 14
+          stale-issue-label: "stale"
+          close-issue-label: "closed-by-stale"
+          exempt-issue-labels: "pinned,security,discussion"
+          exempt-pr-labels: "pinned,security"
+          # 仍可被 `keep-stale` 评论保留
+          operations-per-run: 30
+          only: issues

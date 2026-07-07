@@ -1,0 +1,46 @@
+# Pull Request Labeler：根据改动路径自动打标签
+# 详细文档：https://github.com/actions/labeler
+
+docs:
+  - changed-files:
+      - any-glob-to-any-string:
+          - docs/**
+          - "*.md"
+          - "*.rst"
+          - "*.txt"
+examples:
+  - changed-files:
+      - any-glob-to-any-string:
+          - examples/**
+notebooks:
+  - changed-files:
+      - any-glob-to-any-string:
+          - notebooks/**
+tests:
+  - changed-files:
+      - any-glob-to-any-string:
+          - tests/**
+ci:
+  - changed-files:
+      - any-glob-to-any-string:
+          - ".github/**"
+          - "Makefile"
+          - "Makefile.ps1"
+deps:
+  - changed-files:
+      - any-glob-to-any-string:
+          - requirements.txt
+          - requirements.lock
+          - pyproject.toml
+config:
+  - changed-files:
+      - any-glob-to-any-string:
+          - ".editorconfig"
+          - ".gitignore"
+          - ".gitattributes"
+          - ".dockerignore"
+          - pyproject.toml
+python:
+  - changed-files:
+      - any-glob-to-any-string:
+          - "**/*.py"

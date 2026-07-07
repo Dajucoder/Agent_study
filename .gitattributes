@@ -1,0 +1,45 @@
+# Git 属性：统一换行符、二进制标记、diff 驱动
+
+# 文本文件统一 LF
+* text=auto eol=lf
+
+# Python 源码
+*.py          text eol=lf diff=python
+# Notebook 在 PR diff 中展开产出
+*.ipynb       text eol=lf
+
+# Windows 上的脚本：保留 CRLF
+*.bat         text eol=crlf
+*.ps1         text eol=crlf
+*.cmd         text eol=crlf
+
+# Shell 脚本：LF
+*.sh          text eol=lf
+
+# 文档
+*.md          text eol=lf
+*.txt         text eol=lf
+
+# 配置
+*.yml         text eol=lf
+*.yaml        text eol=lf
+*.toml        text eol=lf
+*.json        text eol=lf
+*.lock        text eol=lf linguist-generated=true
+
+# 二进制
+*.png         binary
+*.jpg         binary
+*.jpeg        binary
+*.gif         binary
+*.webp        binary
+*.pdf         binary
+*.zip         binary
+*.tar.gz      binary
+*.whl         binary
+*.egg-info    linguist-generated=true
+
+# 语言统计：把 vendor/ 之类排除
+vendor/       linguist-vendored=true
+data/chroma/  linguist-vendored=true
+data/cache/   linguist-vendored=true

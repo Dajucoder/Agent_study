@@ -1,0 +1,24 @@
+# 打包时包含的文件清单（本项目不发布到 PyPI，留作未来打包用）
+
+include LICENSE
+include README.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include SECURITY.md
+include requirements.txt
+include requirements.lock
+
+recursive-include docs *.md
+recursive-include examples *.py
+recursive-include notebooks *.ipynb
+recursive-include tests *.py
+include data/docs/sample.txt
+
+# 排除运行时产物
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude .pytest_cache
+global-exclude .ruff_cache
+global-exclude data/chroma/*
+global-exclude data/cache/*

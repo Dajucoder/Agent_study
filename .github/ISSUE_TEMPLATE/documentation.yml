@@ -1,0 +1,46 @@
+name: 📖 文档改进
+description: 错别字、表达不清、缺图、缺链接、过时内容
+title: "[Docs] "
+labels: ["docs", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        文档是项目最重要的资产之一，欢迎任何细节改进！
+
+  - type: input
+    id: file
+    attributes:
+      label: "涉及文件"
+      placeholder: "docs/04-retrieval-and-rag.md 第 36 行"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: "问题类型"
+      options:
+        - "错别字 / 语法"
+        - "表达不清 / 需要例子"
+        - "链接失效 / 路径错误"
+        - "过时内容（API 已变）"
+        - "缺图 / 缺示意"
+        - "翻译问题"
+    validations:
+      required: true
+
+  - type: textarea
+    id: quote
+    attributes:
+      label: "原文摘录"
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: "建议修改"
+    validations:
+      required: true

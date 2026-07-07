@@ -1,0 +1,71 @@
+name: Release
+
+# 当向 main 推送形如 vX.Y.Z 的 tag 时触发。
+# 流程：构建 → 校验 CHANGELOG → 起草 GitHub Release（不发布）→ 由维护者审核后发布。
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: write   # 需要创建 release
+  pull-requests: read
+
+jobs:
+  release:
+    name: Build & Draft Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate tag format
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "Tag: $TAG"
+          if ! [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?$ ]]; then
+            echo "::error::Tag $TAG 不符合语义化版本（vX.Y.Z）"
+            exit 1
+          fi
+
+      - name: Extract version
+        id: version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Read CHANGELOG
+        id: changelog
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          python -c "
+          import re, sys, pathlib
+          text = pathlib.Path('CHANGELOG.md').read_text(encoding='utf-8')
+          pattern = re.compile(r'## \[{v}\].*?(?=\n## \[|$)'.format(v=re.escape(VERSION)), re.S)
+          m = pattern.search(text)
+          if not m:
+              sys.exit(f'未在 CHANGELOG.md 中找到 [{VERSION}] 段')
+          body = m.group(0).strip()
+          # 写入文件以避免多行 YAML 问题
+          pathlib.Path('release_body.md').write_text(body, encoding='utf-8')
+          print('已生成 release_body.md，长度', len(body))
+          "
+
+      - name: Draft GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true           # 先起草，不直接发布
+          generate_release_notes: true
+          body_path: release_body.md
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
