@@ -1,0 +1,60 @@
+# pre-commit 配置：提交前自动跑 lint / format
+# 文档：https://pre-commit.com
+#
+# 使用方法：
+#   pip install pre-commit
+#   pre-commit install              # 安装 git hook（只需一次）
+#   pre-commit run --all-files      # 手动跑所有钩子
+
+repos:
+  # ---- 通用检查 ----
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        # 文档里允许尾部空格（如缩进对齐）
+        exclude: '\.md$'
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]   # 超过 1MB 的文件需明确允许
+      - id: check-merge-conflict
+      - id: detect-private-key     # 防止 .env / 私钥误提交
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  # ---- Ruff：Python 现代化 Linter + Formatter ----
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.4
+    hooks:
+      - id: ruff
+        args: ["--fix", "--exit-non-zero-on-fix"]
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  # ---- 防止大文件、YAML 锚点问题 ----
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ["--config-file=.yamllint.yml"]
+        # 仅检查 .github/ 与根 .yml 文件
+        files: '(\.github/.*\.yml$|^.*\.yml$)'
+
+# ---- 排除 ----
+exclude: |
+  (?x)^(
+      data/chroma/.*|
+      data/cache/.*|
+      \.venv/.*|
+      \.pytest_cache/.*|
+      \.ruff_cache/.*|
+      notebooks/.*\.ipynb
+  )$
+
+# ---- 缺工具时跳过，不直接失败 ----
+minimum_pre_commit_version: "3.0.0"
+fail_fast: false

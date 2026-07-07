@@ -6,11 +6,25 @@
 ## [Unreleased]
 
 ### 计划中
-- `examples/07_ollama_local.py`：Ollama 本地模型分支示例
-- `examples/08_qwen.py`：通义千问 + DashScope 示例
-- 引入 `pre-commit`（ruff + 提交前格式化）
-- 引入 `mkdocs` 文档站点
-- Dockerfile 与 Docker Hub 自动构建
+- 引入 LangGraph 替代 `RunnableWithMessageHistory`
+- 增加 `mkdocs` 文档站自定义主题
+- 添加 `Dockerfile` 最佳实践示例（如多阶段构建缓存）
+
+## [0.3.0] - 2026-07-07
+
+### 新增
+- `examples/07_ollama_local.py`：Ollama 本地模型分支示例（零成本、离线）
+- `examples/08_qwen.py`：通义千问 DashScope 兼容模式示例
+- `.pre-commit-config.yaml` + `.yamllint.yml`：提交前自动 ruff + yaml lint
+- `Dockerfile`：多阶段构建、non-root 用户、可切换 langserve / jupyter
+- `.github/workflows/docker.yml`：tag 推送时多架构构建并推 Docker Hub / GHCR
+- `mkdocs.yml` + `docs/index.md`：Material 主题文档站配置
+- `.github/workflows/mkdocs.yml`：自动构建并部署到 GitHub Pages
+
+### 文档
+- `README.md`：技术栈加 Ollama / DashScope / Docker / mkdocs；目录树同步；新增"模型分支示例"小节
+- `docs/05-agents.md`：常见坑补"绝不要 `eval`" 警示
+- `docs/PROJECT_STRUCTURE.md`：examples 目录树加入 07 / 08；data/ 增加 `chroma_ollama`
 
 ## [0.2.1] - 2026-07-07
 
@@ -63,7 +77,8 @@
 - `notebooks/`：7 个 Jupyter 笔记本（0~6）
 - `data/docs/sample.txt`：RAG 练习示例文档
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Dajucoder/Agent_study/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/Dajucoder/Agent_study/releases/tag/v0.1.0

@@ -1,0 +1,119 @@
+# mkdocs 配置：把 docs/ 渲染为静态站点
+# 文档：https://www.mkdocs.org/
+# 本地预览：pip install mkdocs mkdocs-material && mkdocs serve
+# 部署：推送 tag 后由 .github/workflows/mkdocs.yml 自动构建到 gh-pages
+
+site_name: LangChain 学习项目
+site_description: 系统学习 LangChain 框架的实战型项目
+site_url: https://dajucoder.github.io/Agent_study/
+repo_url: https://github.com/Dajucoder/Agent_study
+repo_name: Dajucoder/Agent_study
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+# docs/ 下不渲染为页面的辅助文件
+exclude_docs: |
+  PROJECT_STRUCTURE.md
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  icon:
+    repo: fontawesome/brands/github
+
+# Markdown 扩展
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.arithmatex
+
+# 站点导航
+nav:
+  - 首页: index.md
+  - 快速上手:
+      - 环境搭建: ENV_SETUP.md
+      - 学习路线: LEARNING_GUIDE.md
+      - 目录结构: PROJECT_STRUCTURE.md
+  - 教程:
+      - 01 模型与提示词: 01-models-and-prompts.md
+      - 02 链（LCEL）: 02-chains.md
+      - 03 记忆: 03-memory.md
+      - 04 检索与 RAG: 04-retrieval-and-rag.md
+      - 05 代理: 05-agents.md
+      - 06 服务化与部署: 06-langserve-and-deployment.md
+  - 进阶:
+      - 架构总览: ARCHITECTURE.md
+      - 成本与限制: COST_AND_LIMITS.md
+      - 可观测性: OBSERVABILITY.md
+      - 常见问题: TROUBLESHOOTING.md
+  - 参考:
+      - 术语表: GLOSSARY.md
+      - 参考资料: REFERENCES.md
+
+# 插件
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      lang:
+        - en
+        - zh
+
+# 版权信息
+copyright: Copyright &copy; 2026 Dajucoder · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> for documentation

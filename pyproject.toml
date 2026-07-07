@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-study"
-version = "0.2.1"
+version = "0.3.0"
 description = "LangChain 学习项目：从 0 到 1 掌握 Model I/O、Chain、Memory、Retrieval、Agent、LangServe"
 readme = "README.md"
 requires-python = ">=3.10"

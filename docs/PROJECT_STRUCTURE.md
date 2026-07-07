@@ -49,23 +49,27 @@ notebooks/
 
 ```
 examples/
-├── _common.py                # 公共工具：环境变量加载、LLM/Embeddings 工厂
+├── _common.py                # 公共工具：环境变量加载、LLM/Embeddings 工厂、format_docs、_safe_eval
 ├── 00_check.py               # 前导脚本：环境验证（先跑这个）
 ├── 01_models_prompts.py      # 模型与提示词
 ├── 02_chains.py              # 链（LCEL）
 ├── 03_memory.py              # 记忆
 ├── 04_rag.py                 # 检索与 RAG
 ├── 05_agents.py              # 代理
-└── 06_langserve.py           # 服务化（LangServe）
+├── 06_langserve.py           # 服务化（LangServe）
+├── 07_ollama_local.py        # 本地模型（Ollama，零成本）
+└── 08_qwen.py                # 通义千问（DashScope 兼容模式）
 ```
 
 每个脚本应能在激活虚拟环境后，通过 `python examples/0x_xxx.py` 直接运行。
 `00_check.py` 是前导脚本，建议每次改完 `.env` 都先跑一次确认环境。
+`07_ollama_local.py` 与 `08_qwen.py` 属于**模型分支示例**，可按需使用，不影响主线 0~6 学习。
 
-## `data/`（运行时生成，已被 git 忽略）
+## `data/`（部分运行时生成）
 
-- `data/docs/`：放你用于 RAG 练习的 PDF / Markdown / TXT。
-- `data/chroma/`：Chroma 向量库持久化目录（运行 RAG 后自动生成）。
+- `data/docs/`：放你用于 RAG 练习的 PDF / Markdown / TXT（**已纳入版本控制**）。
+- `data/chroma/`：OpenAI 嵌入的 Chroma 持久化目录（已被 `.gitignore` 忽略）。
+- `data/chroma_ollama/`：Ollama 嵌入的 Chroma 持久化目录（已被 `.gitignore` 忽略）。
 
 ## `tests/`（可选）
 
