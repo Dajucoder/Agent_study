@@ -61,7 +61,7 @@ jobs:
           "
 
       - name: Draft GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           draft: true           # 先起草，不直接发布
           generate_release_notes: true
