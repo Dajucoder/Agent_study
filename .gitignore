@@ -42,3 +42,9 @@ logs/
 # ===== 系统文件 =====
 .DS_Store
 Thumbs.db
+
+# ===== 临时文件（commit message drafts 等） =====
+*.tmp
+commit_msg*.txt
+commit_msg*.tmp
+/tmp/
