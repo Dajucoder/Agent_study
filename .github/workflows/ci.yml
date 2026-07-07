@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Lint & Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # CI 中不需要真实的 LLM 流量，只装不依赖 langchain-openai 实时调用的最小集合即可。
+          # 但为了一次跑通 smoke 测试中的安全计算器，需要 langchain-core。
+          pip install -r requirements.txt
+          pip install pytest ruff
+
+      - name: Lint (ruff)
+        run: ruff check examples/ tests/
+
+      - name: Test (pytest)
+        env:
+          OPENAI_API_KEY: dummy-not-used
+        run: pytest tests/ -q

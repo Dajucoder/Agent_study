@@ -26,7 +26,11 @@ env/
 htmlcov/
 
 # ===== 数据与日志 =====
-data/
+# 仅忽略运行时产物；data/docs/ 中的示例数据纳入版本控制
+data/chroma/
+data/cache/
+data/uploads/
+!data/docs/
 logs/
 *.log
 

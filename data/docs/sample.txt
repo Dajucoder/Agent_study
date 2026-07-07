@@ -1,0 +1,13 @@
+LangChain 是一个用于构建大语言模型（LLM）应用的开发框架。
+
+它的核心抽象包括 Model I/O、Chains、Memory、Retrieval 和 Agents。
+
+Model I/O 负责把提示词喂给模型并解析输出；Chains 把多个步骤组合成流水线；
+Memory 让对话拥有上下文；Retrieval 支持基于私有文档的检索增强生成（RAG）；
+Agents 则让模型自主决定调用哪些工具来完成任务。
+
+LangChain 通过 LCEL（LangChain Expression Language）用管道符 | 组合各个组件，
+每个组件都是 Runnable，可以嵌套、复用与流式调用。
+
+社区生态丰富，包含 langchain-openai、langchain-community、langchain-core 等包，
+并可通过 LangServe 将链发布为 HTTP 服务，通过 LangSmith 进行链路追踪与可观测。

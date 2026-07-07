@@ -25,39 +25,42 @@
 | `05-agents.md` | 代理 |
 | `06-langserve-and-deployment.md` | 服务化部署 |
 
-## `notebooks/`（你创建）
+## `notebooks/`（已提供）
 
 按章节放置 Jupyter 笔记本，**用于探索和实验**：
 
 ```
 notebooks/
-├── 00_check.ipynb          # 环境验证
-├── 01_models_prompts.ipynb
+├── 00_getting_started.ipynb
+├── 01_models_and_prompts.ipynb
 ├── 02_chains.ipynb
 ├── 03_memory.ipynb
-├── 04_rag.ipynb
+├── 04_retrieval_and_rag.ipynb
 ├── 05_agents.ipynb
-└── 06_langserve.ipynb
+└── 06_langserve_and_deployment.ipynb
 ```
 
 笔记本里建议：代码单元格写实现，Markdown 单元格写"你理解的要点"和"踩坑记录"。
+0~6 共 7 个笔记本均已提供；如需追加练习，可新建 `0x_your_topic.ipynb`。
 
-## `examples/`（你创建）
+## `examples/`（已提供）
 
 放置**可独立运行的脚本**，比笔记本更偏工程化：
 
 ```
 examples/
-├── 01_simple_chat.py
-├── 02_prompt_template.py
-├── 03_lcel_chain.py
-├── 04_conversational_memory.py
-├── 05_rag_qa.py
-├── 06_custom_agent.py
-└── 07_serve.py            # LangServe 入口（进阶）
+├── _common.py                # 公共工具：环境变量加载、LLM/Embeddings 工厂
+├── 00_check.py               # 前导脚本：环境验证（先跑这个）
+├── 01_models_prompts.py      # 模型与提示词
+├── 02_chains.py              # 链（LCEL）
+├── 03_memory.py              # 记忆
+├── 04_rag.py                 # 检索与 RAG
+├── 05_agents.py              # 代理
+└── 06_langserve.py           # 服务化（LangServe）
 ```
 
 每个脚本应能在激活虚拟环境后，通过 `python examples/0x_xxx.py` 直接运行。
+`00_check.py` 是前导脚本，建议每次改完 `.env` 都先跑一次确认环境。
 
 ## `data/`（运行时生成，已被 git 忽略）
 
