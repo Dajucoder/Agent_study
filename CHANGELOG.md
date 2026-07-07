@@ -77,7 +77,8 @@
 - `notebooks/`：7 个 Jupyter 笔记本（0~6）
 - `data/docs/sample.txt`：RAG 练习示例文档
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Dajucoder/Agent_study/compare/v0.1.0...v0.2.0

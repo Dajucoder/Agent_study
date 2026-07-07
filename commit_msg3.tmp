@@ -1,0 +1,40 @@
+feat: 全面国际化（中英双语）+ _common 拆分 + CI 加 mypy/bandit
+
+本批对应 IMPROVEMENT_PLAN.md v0.4.0。
+
+【国际化（核心）】
+- 顶层元文件英文化：
+  - README.en.md（镜像全量内容）
+  - CHANGELOG.en.md / CONTRIBUTING.en.md / SECURITY.en.md
+- docs/ 全部英文化（16 篇 .en.md）：
+  - index / LEARNING_GUIDE / ENV_SETUP / PROJECT_STRUCTURE
+  - 01-06 六章教程
+  - ARCHITECTURE / COST_AND_LIMITS / OBSERVABILITY / TROUBLESHOOTING
+  - GLOSSARY / REFERENCES
+- README 顶部加 EN/ZH 切换链接
+
+【_common 拆分子模块】
+- examples/_common.py（单文件）→ examples/_common/（package）：
+  - _common/__init__.py（re-export，保持向后兼容）
+  - _common/paths.py（路径常量，单独避免循环 import）
+  - _common/env.py（get_env / require_env / check_api_key / project_root / data_path）
+  - _common/llm.py（get_llm / get_embeddings 工厂）
+  - _common/io.py（format_docs）
+  - _common/calc.py（_safe_eval + AST 白名单）
+- 所有 examples/0x_*.py 沿用 from _common import ... 无需修改
+
+【CI 质量门禁增强】
+- ci.yml 新增：mypy 类型检查（仅 _common/ 与 tests/）
+- ci.yml 新增：bandit 安全扫描（medium+ 级别）
+- ci.yml 新增：ruff format --check（格式校验）
+- ci.yml 新增：coverage 报告 + 70% 阈值
+
+【同步更新】
+- pyproject.toml：version=0.4.0
+- CHANGELOG.md / CHANGELOG.en.md：0.4.0 段
+- README.md：当前版本号 0.4.0
+
+测试验证：
+- py_compile 19 个 Python 文件全部通过
+- pytest 16 passed in 12.97s
+- python examples/00_check.py 实际调用成功
