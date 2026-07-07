@@ -1,5 +1,7 @@
 # 常见问题与排查（Troubleshooting / FAQ）
 
+> 🌐 **English version**: [TROUBLESHOOTING.en.md](TROUBLESHOOTING.en.md)
+
 > 把"踩过的坑"集中到一处。**先看本节，再去提 Issue。**
 
 ## 安装与环境

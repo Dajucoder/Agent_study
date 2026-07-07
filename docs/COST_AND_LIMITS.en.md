@@ -1,5 +1,7 @@
 # Cost & Limits
 
+> 🌐 **中文版**: [COST_AND_LIMITS.md](COST_AND_LIMITS.md)
+
 > This chapter focuses on the **cost, timeouts, rate limits** of LLM calls, and **cost-saving strategies**. Whether you use OpenAI or a third-party OpenAI-compatible service, develop the habit of "watch tokens, know rate limits, set caps".
 
 ## 1. Cost Components

@@ -1,5 +1,7 @@
 # 术语表（Glossary）
 
+> 🌐 **English version**: [GLOSSARY.en.md](GLOSSARY.en.md)
+
 > 学习中可能遇到的名词解释。**不要求一次全懂**——遇到不熟的词回来查就行。
 
 ## 基础概念

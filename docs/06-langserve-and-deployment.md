@@ -1,5 +1,7 @@
 # 06 · 服务化与部署（LangServe）
 
+> 🌐 **English version**: [06-langserve-and-deployment.en.md](06-langserve-and-deployment.en.md)
+
 学会写链之后，下一步是把链变成**可被其他程序调用的服务**。本章用 **LangServe**（基于 FastAPI）把链暴露为 HTTP API。
 
 ## 本章目标

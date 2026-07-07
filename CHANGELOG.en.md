@@ -1,5 +1,7 @@
 # Changelog
 
+> 🌐 **中文版**: [CHANGELOG.md](CHANGELOG.md)
+
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and version numbers follow [Semantic Versioning](https://semver.org/).
 
@@ -10,6 +12,15 @@ and version numbers follow [Semantic Versioning](https://semver.org/).
 - `mkdocs` docs site custom theme
 - `Dockerfile` best practices (e.g. multi-stage build cache)
 - mypy / bandit added to CI
+
+## [0.4.1] - 2026-07-07
+
+### Changed
+- All `docs/*.md` and `docs/*.en.md` (32 docs) get a language-switcher link at the top
+- Top-level meta files (README / CHANGELOG / CONTRIBUTING / SECURITY) cross-link between ZH and EN
+- `mkdocs.yml`: added `version/extra.social` and `content.action.edit`; excluded `*.en.md` from nav
+- `README.md`: added "Recent Updates" section highlighting v0.3 / v0.4 features
+- `.gitignore`: added `.codebuddy/` to prevent dev-tool scripts from being committed
 
 ## [0.4.0] - 2026-07-07
 
@@ -92,7 +103,8 @@ and version numbers follow [Semantic Versioning](https://semver.org/).
 - `notebooks/`: 7 Jupyter notebooks (0~6)
 - `data/docs/sample.txt`: RAG practice sample document
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...v0.2.1

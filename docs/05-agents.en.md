@@ -1,5 +1,7 @@
 # 05 · Agents
 
+> 🌐 **中文版**: [05-agents.md](05-agents.md)
+
 When the task's steps are unpredictable (you need to "play it by ear"), use **Agent**: let the LLM itself decide which tools to call and in what order.
 
 ## Goals

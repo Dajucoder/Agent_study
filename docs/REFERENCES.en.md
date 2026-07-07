@@ -1,5 +1,7 @@
 # References
 
+> 🌐 **中文版**: [REFERENCES.md](REFERENCES.md)
+
 > External docs, tutorials, and tools commonly used during learning, grouped by topic.
 
 ## Official Documentation (must-read)

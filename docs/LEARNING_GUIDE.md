@@ -1,5 +1,7 @@
 # 学习路线总纲（Learning Guide）
 
+> 🌐 **English version**: [LEARNING_GUIDE.en.md](LEARNING_GUIDE.en.md)
+
 本文档给出推荐的 LangChain 学习顺序与每阶段的目标、投入时间建议。请配合 `docs/0x-*.md` 各章节文档与 `notebooks/`、`examples/` 中的动手练习。
 
 ## 前置知识

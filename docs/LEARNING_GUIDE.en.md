@@ -1,5 +1,7 @@
 # Learning Guide
 
+> 🌐 **中文版**: [LEARNING_GUIDE.md](LEARNING_GUIDE.md)
+
 This document gives the recommended LangChain learning order, the goal of each phase, and the time investment. Use it together with `docs/0x-*.md` chapters and the hands-on practice in `notebooks/` and `examples/`.
 
 ## Prerequisites

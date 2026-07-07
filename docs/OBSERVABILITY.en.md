@@ -1,5 +1,7 @@
 # Observability
 
+> 🌐 **中文版**: [OBSERVABILITY.md](OBSERVABILITY.md)
+
 > This chapter explains "how to see what happens in an LLM call" — a key step in upgrading a demo to a maintainable system.
 
 ## 1. Why Observability

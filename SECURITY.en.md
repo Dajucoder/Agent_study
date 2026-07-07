@@ -1,5 +1,7 @@
 # Security Policy
 
+> 🌐 **中文版**: [SECURITY.md](SECURITY.md)
+
 ## Supported Versions
 
 The following table shows which versions of this project receive security updates:

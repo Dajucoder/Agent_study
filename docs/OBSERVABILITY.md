@@ -1,5 +1,7 @@
 # 可观测性（Observability）
 
+> 🌐 **English version**: [OBSERVABILITY.en.md](OBSERVABILITY.en.md)
+
 > 本章讲清"如何看一次 LLM 调用发生了什么"——这是把 demo 升级为可维护系统的关键一步。
 
 ## 1. 为什么要可观测

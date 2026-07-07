@@ -1,5 +1,7 @@
 # Glossary
 
+> 🌐 **中文版**: [GLOSSARY.md](GLOSSARY.md)
+
 > Explanations of terms you may encounter while learning. **You don't need to understand them all at once** — look them up here when you meet an unfamiliar term.
 
 ## Basics

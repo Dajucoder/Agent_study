@@ -1,5 +1,7 @@
 # 03 · 记忆（Memory）
 
+> 🌐 **English version**: [03-memory.en.md](03-memory.en.md)
+
 真实对话需要上下文。本章学习如何让链"记住"历史消息，实现多轮连贯对话。
 
 ## 本章目标

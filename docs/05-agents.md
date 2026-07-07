@@ -1,5 +1,7 @@
 # 05 · 代理（Agents）
 
+> 🌐 **English version**: [05-agents.en.md](05-agents.en.md)
+
 当任务步骤不可预知（需要"看情况"决定下一步），就用 **Agent**：让 LLM 自己决定调用哪些工具、调用顺序如何。
 
 ## 本章目标

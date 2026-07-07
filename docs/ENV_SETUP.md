@@ -1,5 +1,7 @@
 # 环境搭建（Environment Setup）
 
+> 🌐 **English version**: [ENV_SETUP.en.md](ENV_SETUP.en.md)
+
 本章带你在本地把项目跑起来，并能成功调用一次大模型。请严格按步骤操作。
 
 ## 1. 确认 Python 版本

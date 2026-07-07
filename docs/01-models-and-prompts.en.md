@@ -1,5 +1,7 @@
 # 01 · Models & Prompts (Model I/O)
 
+> 🌐 **中文版**: [01-models-and-prompts.md](01-models-and-prompts.md)
+
 The most fundamental abstraction in LangChain is **Model I/O**: how to feed a "prompt" to a "model" and parse the "model output" into the format you want.
 
 ## Goals

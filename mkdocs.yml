@@ -10,12 +10,28 @@ repo_url: https://github.com/Dajucoder/Agent_study
 repo_name: Dajucoder/Agent_study
 edit_uri: edit/main/docs/
 
+# 站点额外信息
+extra:
+  version:
+    provider: mike        # 多版本支持（与 mike 插件配合：mike deploy --push --update-docs v0.4）
+    default: stable
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Dajucoder/Agent_study
+      name: GitHub Repository
+    - icon: fontawesome/brands/python
+      link: https://python.langchain.com
+      name: LangChain Python
+
 docs_dir: docs
 site_dir: site
 
 # docs/ 下不渲染为页面的辅助文件
+# PROJECT_STRUCTURE 是项目结构说明，单独通过 GitHub 仓库查看
+# *.en.md 文件作为同主题英文镜像，顶部有链接但不单独建页面（避免 nav 翻倍）
 exclude_docs: |
   PROJECT_STRUCTURE.md
+  *.en.md
 
 theme:
   name: material
@@ -31,9 +47,11 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
     - content.tabs.link
     - content.code.annotate
+    - content.action.edit  # 顶部 "Edit this page" 按钮（指向 edit_uri）
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

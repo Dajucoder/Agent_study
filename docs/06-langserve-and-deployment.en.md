@@ -1,5 +1,7 @@
 # 06 · Serving & Deployment (LangServe)
 
+> 🌐 **中文版**: [06-langserve-and-deployment.md](06-langserve-and-deployment.md)
+
 After learning to write chains, the next step is turning them into **services that other programs can call**. This chapter uses **LangServe** (built on FastAPI) to expose chains as HTTP APIs.
 
 ## Goals

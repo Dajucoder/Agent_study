@@ -1,5 +1,7 @@
 # 贡献指南（Contributing）
 
+> 🌐 **English version**: [CONTRIBUTING.en.md](CONTRIBUTING.en.md)
+
 感谢你考虑为本项目做出贡献！🎉
 
 本项目主要定位是 **LangChain 个人学习仓库**，但欢迎任何形式的反馈：提 Issue、改正错别字、补全文档示例、分享更好的实践。

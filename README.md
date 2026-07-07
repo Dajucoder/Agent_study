@@ -1,5 +1,7 @@
 # LangChain 学习项目
 
+> 🌐 **English version**: [README.en.md](README.en.md)
+
 > 一个系统学习 **LangChain** 框架的实战型项目。从 0 到 1 掌握 Model I/O、Chain、Memory、Retrieval、Agent、LangServe 六大主题，配套可运行示例、交互式笔记本、工程化测试与 CI。
 
 <!-- 徽章：CI / 协议 / 版本 / 语言 / 代码风格 -->
@@ -36,6 +38,23 @@
 - 从 0 到 1 理解 LangChain 的设计理念与核心抽象（Model I/O、Chain、Memory、Retrieval、Agent）。
 - 通过分模块、循序渐进的练习，能够独立搭建一个基于 LLM 的应用（如 RAG 问答、智能代理）。
 - 建立可复用的工程化认知：配置管理、可观测性（LangSmith）、服务化部署（LangServe）。
+
+## 最近更新（Recent Updates）
+
+### 🌐 v0.4.0 · 全面国际化（2026-07-07）
+- **双语文档**：16 篇中文 + 16 篇英文（`README.en.md` + `docs/*.en.md`），每篇顶部都有语言切换链接
+- **代码拆分**：`examples/_common.py` 拆为 `examples/_common/` 包（`env` / `llm` / `io` / `calc` / `paths`）
+- **CI 增强**：加入 `mypy` 类型检查、`bandit` 安全扫描、`coverage` 70% 门槛
+
+### 🚀 v0.3.0 · 多模型 + 部署（2026-07-07）
+- **Ollama / Qwen**：零成本离线 / 国产低成本，详见 `examples/07_ollama_local.py` 和 `08_qwen.py`
+- **Docker**：`Dockerfile`（多阶段 · non-root） + Docker Hub / GHCR 自动构建
+- **mkdocs 文档站**：Material 主题，自动部署到 GitHub Pages
+- **pre-commit**：提交前自动 ruff + yamllint
+
+### 🛠 v0.2.x · 工程化（2026-07-07）
+- 抽取 `_common.py`、补全测试、Makefile、CI、CHANGELOG、社区健康文件（CONTRIBUTING / CODE_OF_CONDUCT / SECURITY）
+- 详情见 [CHANGELOG.md](CHANGELOG.md)
 
 ## 适合人群
 

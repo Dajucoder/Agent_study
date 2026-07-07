@@ -1,5 +1,7 @@
 # 更新日志（Changelog）
 
+> 🌐 **English version**: [CHANGELOG.en.md](CHANGELOG.en.md)
+
 本项目所有值得注意的变更都记录在此文件。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号遵循 [语义化版本（Semantic Versioning）](https://semver.org/lang/zh-CN/)。
 
@@ -9,6 +11,26 @@
 - 引入 LangGraph 替代 `RunnableWithMessageHistory`
 - 增加 `mkdocs` 文档站自定义主题
 - 添加 `Dockerfile` 最佳实践示例（如多阶段构建缓存）
+
+## [0.4.1] - 2026-07-07
+
+### 变更
+- 全部 `docs/*.md` 与 `docs/*.en.md` 共 32 篇顶部加双语切换链接
+- 顶层元文件（README / CHANGELOG / CONTRIBUTING / SECURITY）双语互相指向
+- `mkdocs.yml` 加 `version/extra.social` 与 `content.action.edit`，把 `*.en.md` 排除 nav
+- `README.md` 加 "最近更新" 段，突显 v0.3 / v0.4 新特性
+- `.gitignore` 加 `.codebuddy/` 避免开发工具脚本被 commit
+
+## [0.4.0] - 2026-07-07
+
+### 新增
+- **双语文档**：`README.en.md` 与 `docs/*.en.md`（16 篇英文版）
+- `examples/_common.py` → `examples/_common/` 拆分子模块（`env` / `llm` / `io` / `calc` / `paths`）
+- CI 质量门禁：mypy / bandit / coverage 70%
+
+### 变更
+- 7 个 `examples/0x_*.py` 沿用 `from _common import ...`（向后兼容）
+- `requirements.txt` 标注可复现安装方式
 
 ## [0.3.0] - 2026-07-07
 
@@ -77,7 +99,8 @@
 - `notebooks/`：7 个 Jupyter 笔记本（0~6）
 - `data/docs/sample.txt`：RAG 练习示例文档
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/Dajucoder/Agent_study/compare/v0.2.0...v0.2.1

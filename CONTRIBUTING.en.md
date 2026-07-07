@@ -1,5 +1,7 @@
 # Contributing
 
+> 🌐 **中文版**: [CONTRIBUTING.md](CONTRIBUTING.md)
+
 Thanks for considering contributing to this project! 🎉
 
 This project is mainly a **personal LangChain learning repository**, but all forms of feedback are welcome: open an Issue, fix typos, supplement doc examples, share better practices.

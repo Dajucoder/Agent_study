@@ -1,5 +1,7 @@
 # 04 · Retrieval & RAG (Retrieval-Augmented Generation)
 
+> 🌐 **中文版**: [04-retrieval-and-rag.md](04-retrieval-and-rag.md)
+
 **RAG** lets the model answer based on "private documents you provide", rather than only what it remembered during training. It's one of the most common application patterns with LangChain.
 
 ## Goals

@@ -1,5 +1,7 @@
 # 04 · 检索与 RAG（Retrieval-Augmented Generation）
 
+> 🌐 **English version**: [04-retrieval-and-rag.en.md](04-retrieval-and-rag.en.md)
+
 **RAG** 让模型基于"你提供的私有文档"回答，而不是只靠训练时记住的知识。这是 LangChain 最主流的应用形态之一。
 
 ## 本章目标

@@ -1,5 +1,7 @@
 # FAQ & Troubleshooting
 
+> 🌐 **中文版**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
 > Consolidating "the pitfalls you've stepped on" in one place. **Check this section before opening an issue.**
 
 ## Installation & Environment

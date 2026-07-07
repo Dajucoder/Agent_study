@@ -1,5 +1,7 @@
 # 参考资料（References）
 
+> 🌐 **English version**: [REFERENCES.en.md](REFERENCES.en.md)
+
 > 学习中常用到的外部文档、教程、工具，按主题分组。
 
 ## 官方文档（必读）

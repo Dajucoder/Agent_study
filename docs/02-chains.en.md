@@ -1,5 +1,7 @@
 # 02 · Chains
 
+> 🌐 **中文版**: [02-chains.md](02-chains.md)
+
 When "prompt → model → parsing" needs to be chained, or multi-step composition is required, use **Chains**. Modern LangChain recommends using **LCEL (LangChain Expression Language)** to compose components with the `|` pipe operator.
 
 ## Goals

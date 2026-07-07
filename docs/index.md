@@ -1,5 +1,7 @@
 # LangChain 学习项目
 
+> 🌐 **English version**: [index.en.md](index.en.md)
+
 > 一个系统学习 **LangChain** 框架的实战型项目。从 0 到 1 掌握 Model I/O、Chain、Memory、Retrieval、Agent、LangServe 六大主题。
 
 !!! tip "快速开始"

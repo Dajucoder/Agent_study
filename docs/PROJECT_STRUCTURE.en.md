@@ -1,5 +1,7 @@
 # Directory Layout & Module Description
 
+> 🌐 **中文版**: [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
+
 This file describes the purpose of every directory / file in the project, and what **you should create** during learning. The doc doesn't write code for you — it just says "what you should write".
 
 ## Top-level Files

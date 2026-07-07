@@ -1,5 +1,7 @@
 # 安全策略（Security Policy）
 
+> 🌐 **English version**: [SECURITY.en.md](SECURITY.en.md)
+
 ## 支持的版本
 
 下表说明本项目哪些版本接收安全更新：

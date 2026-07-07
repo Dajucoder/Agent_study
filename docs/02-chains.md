@@ -1,5 +1,7 @@
 # 02 · 链（Chains）
 
+> 🌐 **English version**: [02-chains.en.md](02-chains.en.md)
+
 当"提示词 → 模型 → 解析"需要串联，或需要多步组合时，就用 **链（Chain）**。现代 LangChain 推荐用 **LCEL（LangChain Expression Language）** 以管道符 `|` 组合组件。
 
 ## 本章目标

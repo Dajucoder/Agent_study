@@ -1,5 +1,7 @@
 # Architecture Overview
 
+> 🌐 **中文版**: [ARCHITECTURE.md](ARCHITECTURE.md)
+
 > For readers who want a global view of the project. After reading, you should be able to draw a clear picture of the module relationships.
 
 ## 1. Design Goals

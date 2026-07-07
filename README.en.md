@@ -1,5 +1,7 @@
 # LangChain Learning Project
 
+> 🌐 **中文版**: [README.md](README.md)
+
 > A hands-on project for **systematically learning the LangChain framework**. From 0 to 1, master the six core topics: Model I/O, Chain, Memory, Retrieval, Agent, and LangServe — with runnable examples, interactive notebooks, engineering-grade tests, and CI.
 
 <!-- Badges: CI / License / Version / Language / Code style -->

@@ -1,5 +1,7 @@
 # 01 · 模型与提示词（Model I/O）
 
+> 🌐 **English version**: [01-models-and-prompts.en.md](01-models-and-prompts.en.md)
+
 LangChain 中最底层、也是最重要的抽象就是 **Model I/O**：如何把"提示词"喂给"模型"，再把"模型输出"解析成你想要的格式。
 
 ## 本章目标

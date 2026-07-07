@@ -1,5 +1,7 @@
 # 03 · Memory
 
+> 🌐 **中文版**: [03-memory.md](03-memory.md)
+
 Real conversations need context. This chapter learns how to make a chain "remember" history, enabling coherent multi-turn dialog.
 
 ## Goals

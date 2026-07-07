@@ -1,5 +1,7 @@
 # Environment Setup
 
+> 🌐 **中文版**: [ENV_SETUP.md](ENV_SETUP.md)
+
 This chapter walks you through getting the project running locally and successfully calling a model. Please follow the steps strictly.
 
 ## 1. Verify Python Version

@@ -1,5 +1,7 @@
 # 架构总览（Architecture）
 
+> 🌐 **English version**: [ARCHITECTURE.en.md](ARCHITECTURE.en.md)
+
 > 写给"想从全局理解项目"的读者。读完后你应该能用一张图画清本项目的模块关系。
 
 ## 1. 设计目标

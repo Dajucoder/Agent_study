@@ -1,5 +1,7 @@
 # 成本与限制（Cost & Limits）
 
+> 🌐 **English version**: [COST_AND_LIMITS.en.md](COST_AND_LIMITS.en.md)
+
 > 本章集中说明 LLM 调用可能产生的**费用、超时、速率限制**以及**省钱策略**。
 > 不论是 OpenAI 官方还是第三方 OpenAI 兼容服务，养成"看 token、知速率、设上限"的习惯都至关重要。
 

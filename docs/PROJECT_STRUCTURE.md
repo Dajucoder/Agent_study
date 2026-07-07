@@ -1,5 +1,7 @@
 # 目录结构与模块说明（Project Structure）
 
+> 🌐 **English version**: [PROJECT_STRUCTURE.en.md](PROJECT_STRUCTURE.en.md)
+
 本文件说明项目每个目录/文件的用途，以及你在学习过程中应当**亲手创建**的内容。文档不替你写代码，只指明"应该写出什么"。
 
 ## 顶层文件
