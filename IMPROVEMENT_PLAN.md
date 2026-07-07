@@ -142,14 +142,16 @@
 
 ---
 
-## P4 · 后续（暂缓，先看学习价值）
+## P4 · 后续（已全部完成于 v0.3.0）
 
-- [ ] P13 · `examples/07_ollama_local.py`：本地模型分支示例
-- [ ] P14 · `examples/08_qwen.py`：通义千问示例
-- [ ] P15 · `docs/COST_AND_LIMITS.md`：成本控制章节
-- [ ] P16 · `docs/OBSERVABILITY.md`：LangSmith 追踪操作录屏/截图
-- [ ] P17 · 引入 `pre-commit`（ruff + black + 提交前格式化）
-- [ ] P18 · `docs/05-agents.md` 补充"生产中绝不要 eval"提示（与 P5 配套）
+- [x] P13 · `examples/07_ollama_local.py`：Ollama 本地模型分支示例
+- [x] P14 · `examples/08_qwen.py`：通义千问 DashScope 兼容模式示例
+- [x] P15 · `docs/COST_AND_LIMITS.md`：成本控制章节
+- [x] P16 · `docs/OBSERVABILITY.md`：LangSmith 入门与 debug 技巧
+- [x] P17 · 引入 `pre-commit`（ruff + ruff-format + yamllint）
+- [x] P18 · `docs/05-agents.md` 补"绝不要 eval"提示（与 P5 配套）
+- [x] Dockerfile + Docker Hub / GHCR 自动构建发布
+- [x] mkdocs 文档站点（Material 主题）+ GitHub Pages 自动部署
 
 ---
 
@@ -165,6 +167,8 @@
 - 2026-07-07 · P9 完成（`tests/` + 16 个测试全过）
 - 2026-07-07 · P10 完成（`Makefile` + `Makefile.ps1`）
 - 2026-07-07 · P11 完成（`.github/workflows/ci.yml`）
+- 2026-07-07 · 推送 v0.2.0 → 推送 v0.2.1（补齐仓库元数据 / 社区健康 / CI 自动化 / 文档增量）
+- 2026-07-07 · P13~P18 + Dockerfile + mkdocs 全部完成 → 推送 v0.3.0
 
 ### 实际验证结果
 
