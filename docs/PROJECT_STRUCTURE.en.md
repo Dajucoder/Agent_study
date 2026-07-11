@@ -1,6 +1,10 @@
 # Directory Layout & Module Description
 
 > 🌐 **中文版**: [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [ENV_SETUP](/en/ENV_SETUP/) · [ARCHITECTURE](/en/ARCHITECTURE/)
+>
+> 🏷️ **Type**: Project map · **Time**: ~5 min · **Prereq**: none
 
 This file describes the purpose of every directory / file in the project, and what **you should create** during learning. The doc doesn't write code for you — it just says "what you should write".
 
@@ -65,12 +69,17 @@ examples/
 ├── 00_check.py               # Lead script: environment check
 ├── 01_models_prompts.py      # Models & Prompts
 ├── 02_chains.py              # Chains (LCEL)
-├── 03_memory.py              # Memory
+├── 03_memory.py              # Memory (entry: defaults to LangGraph version)
+├── 03_memory_graph.py       # Memory · LangGraph style (recommended, 1.x)
+├── 03_memory_runnable.py    # Memory · legacy API (RunnableWithMessageHistory, deprecated)
 ├── 04_rag.py                 # Retrieval & RAG
 ├── 05_agents.py              # Agents
 ├── 06_langserve.py           # Serving (LangServe)
 ├── 07_ollama_local.py        # Local model (Ollama, zero-cost)
-└── 08_qwen.py                # Qwen (DashScope compatible mode)
+├── 08_qwen.py                # Qwen (DashScope compatible mode)
+├── 09_caching.py            # Cache layer (InMemory / SQLite)
+├── 10_rag_eval.py          # RAG evaluation (context recall + optional RAGAS)
+└── 11_observability.py     # Observability in practice (token count + LangSmith + OTel)
 ```
 
 Each script should be runnable with `python examples/0x_xxx.py` after activating the venv.

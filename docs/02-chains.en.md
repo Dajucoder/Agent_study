@@ -1,6 +1,10 @@
 # 02 · Chains
 
 > 🌐 **中文版**: [02-chains.md](02-chains.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [📚 Learning Path](/en/LEARNING_GUIDE/) · Prev：[01 Models & Prompts](/en/01-models-and-prompts/) · Next：[03 Memory](/en/03-memory/) · Related：[01 Models & Prompts](/en/01-models-and-prompts/) · [04 Retrieval & RAG](/en/04-retrieval-and-rag/)
+>
+> 🏷️ **Level**: Easy · **Time**: ~25 min · **Prereq**: [01 Models & Prompts](/en/01-models-and-prompts/)
 
 When "prompt → model → parsing" needs to be chained, or multi-step composition is required, use **Chains**. Modern LangChain recommends using **LCEL (LangChain Expression Language)** to compose components with the `|` pipe operator.
 

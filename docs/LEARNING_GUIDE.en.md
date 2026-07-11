@@ -1,6 +1,10 @@
 # Learning Guide
 
 > 🌐 **中文版**: [LEARNING_GUIDE.md](LEARNING_GUIDE.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [ENV_SETUP](/en/ENV_SETUP/) · [01 Models & Prompts](/en/01-models-and-prompts/) · [PROJECT_STRUCTURE](/en/PROJECT_STRUCTURE/)
+>
+> 🏷️ **Level**: Beginner · **Time**: ~10 min · **Prereq**: [ENV_SETUP](/en/ENV_SETUP/)
 
 This document gives the recommended LangChain learning order, the goal of each phase, and the time investment. Use it together with `docs/0x-*.md` chapters and the hands-on practice in `notebooks/` and `examples/`.
 

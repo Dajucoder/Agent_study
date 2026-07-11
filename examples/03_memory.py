@@ -1,67 +1,24 @@
-"""03 · 记忆（Memory）
+"""03 · 记忆（Memory）— 入口导航
 
-用 RunnableWithMessageHistory 给链挂载多轮对话记忆，按 session_id 隔离不同会话。
-注意：底层链使用 prompt | llm（不带 StrOutputParser），保证 AI 消息以 AIMessage 形式
-写入历史，避免 schema 类型丢失。
+本文件是「记忆」章节的入口，默认演示 langchain 1.x 推荐写法：
 
-运行：python examples/03_memory.py
+- 推荐示例：03_memory_graph.py   （LangGraph 风格：StateGraph + MemorySaver）
+- 历史对照：03_memory_runnable.py（RunnableWithMessageHistory，1.x 已 deprecated）
+
+运行：python examples/03_memory.py   （与 `make run-03` 等价，默认跑 LangGraph 版）
 """
-from langchain_core.chat_history import InMemoryChatMessageHistory
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables.history import RunnableWithMessageHistory
+import importlib.util
+from pathlib import Path
 
-from _common import check_api_key, get_llm
+from _common import check_api_key
 
-
-def main() -> None:
-    check_api_key()
-    llm = get_llm()
-
-    # 历史消息会被插入到 MessagesPlaceholder("history") 所在位置
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", "你是一个简洁的助手。"),
-        MessagesPlaceholder("history"),
-        ("human", "{input}"),
-    ])
-
-    # 底层链保留 AIMessage（不接 StrOutputParser），确保历史以正确类型写回。
-    base_chain = prompt | llm
-
-    # 用字典按 session_id 保存不同会话的历史
-    store: dict = {}
-
-    def get_session_history(session_id: str):
-        if session_id not in store:
-            store[session_id] = InMemoryChatMessageHistory()
-        return store[session_id]
-
-    chain_with_history = RunnableWithMessageHistory(
-        base_chain,
-        get_session_history,
-        input_messages_key="input",
-        history_messages_key="history",
-    )
-
-    # 同一个 session_id 的多轮对话会共享上下文
-    cfg = {"configurable": {"session_id": "user-1"}}
-    reply_1 = chain_with_history.invoke({"input": "我的名字叫小明。"}, config=cfg)
-    print("第1轮：", reply_1.content)
-    reply_2 = chain_with_history.invoke({"input": "我叫什么名字？"}, config=cfg)
-    print("第2轮：", reply_2.content)
-
-    # 不同 session_id 之间互不干扰
-    cfg2 = {"configurable": {"session_id": "user-2"}}
-    new_session_reply = chain_with_history.invoke({"input": "我叫什么名字？"}, config=cfg2)
-    print("新会话：", new_session_reply.content)
-
-    # 简单自检：第二个回答里应当提到"小明"；新会话里不应知道姓名
-    assert "小明" in reply_2.content, f"期望回复中包含'小明'，实际：{reply_2.content!r}"
-    assert "小明" not in new_session_reply.content, (
-        f"新会话不应包含'小明'，实际：{new_session_reply.content!r}"
-    )
-    print("\n✓ 自检通过：第 2 轮能记住姓名，新会话不串号。")
+# 文件名以数字开头，无法用普通 import，用 importlib 按路径加载
+_graph_path = Path(__file__).with_name("03_memory_graph.py")
+_spec = importlib.util.spec_from_file_location("_mem_graph", _graph_path)
+_mod = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_mod)
 
 
 if __name__ == "__main__":
-    main()
+    check_api_key()
+    _mod.main()

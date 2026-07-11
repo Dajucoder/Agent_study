@@ -1,17 +1,52 @@
 # Changelog
 
 > 🌐 **中文版**: [CHANGELOG.md](CHANGELOG.md)
+>
+> 🧭 **Navigate** · [🏠 Project Home](README.en.md) · [Improvement Plan](IMPROVEMENT_PLAN.md) · [Contributing](CONTRIBUTING.en.md)
+>
+> 🏷️ **Type**: Changelog · **For**: those tracking changes
 
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and version numbers follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-### Planned
-- Migrate `RunnableWithMessageHistory` to LangGraph
-- `mkdocs` docs site custom theme
-- `Dockerfile` best practices (e.g. multi-stage build cache)
-- mypy / bandit added to CI
+### Planned (v0.6.0 roadmap · see IMPROVEMENT_PLAN P47~P52)
+- LangGraph full examples (multi-agent / human-in-the-loop, P47)
+- Notebook regression tests (nbval + nbstripout, P48)
+- OpenTelemetry full integration (P49)
+- uv replacing pip to auto-generate lockfile (P50)
+- Multi vector-store backend examples FAISS / Qdrant / Milvus (P51)
+- Streaming Web UI demo (SSE live echo, P52)
+
+## [0.5.0] - 2026-07-11
+
+### Added
+- **Modern API**: `01_models_prompts.py` migrated to `with_structured_output`; `03_memory_graph.py` (LangGraph `StateGraph` + `MemorySaver`) + legacy compare `03_memory_runnable.py` + entry nav `03_memory.py`
+- `examples/09_caching.py`: cache layer (`InMemoryCache` / `SQLiteCache`)
+- `examples/10_rag_eval.py`: RAG eval (self-built context recall + optional RAGAS)
+- `examples/11_observability.py`: observability (token count + LangSmith + OpenTelemetry)
+- `examples/INDEX.md` / `notebooks/INDEX.md` (with `.en.md`): entry nav for examples & notebooks
+- **Real bilingual mkdocs**: `mkdocs-static-i18n` (suffix mode, auto `/en/` subsite + language switcher); 32 docs' `](X.en.md)` links normalized to `/en/X/`
+- **Centralized config**: `pydantic-settings` (`examples/_common/settings.py` for `.env`)
+- **Docker deploy**: `Dockerfile` `HEALTHCHECK` (probes `/health`) + `curl`; `README` / `docs/06` Docker run example (with `-v data/chroma`)
+- Tests added: `test_env` / `test_paths` / `test_io` / `test_04_rag` / `test_03_memory_logic` / `test_06_langserve` / `test_10_rag_eval` / `test_11_observability`, **42 cases** total
+
+### Changed
+- `_common/llm.py` adds `temperature / timeout / max_retries` defaults; `get_llm` / `get_embeddings` pass through `openai_api_base`
+- `docs/04-retrieval-and-rag.md` adds "Advanced: Evaluation" and "Advanced Retrieval (Re-ranking / Hybrid Search)"
+- `CONTRIBUTING.md` adds "run `make lint && make test` before PR" guidance
+- CI: matrix adds `windows-latest` to verify `Makefile.ps1`; adds `requirements.lock` resolvable check (`--dry-run`); coverage source narrowed to `examples/_common` with `fail_under=85` (measured 93%)
+- `Makefile` / `Makefile.ps1` add `format` / `coverage` / `security` / `lock-check` targets
+- Deps: `langgraph`, `pydantic-settings` added to `requirements.txt` / `requirements.lock`
+
+## [0.4.2] - 2026-07-11
+
+### Changed (docs-consistency hotfix)
+- Fix `docs/06-langserve-and-deployment.md` exercise filename `07_serve.py` → `06_langserve.py`
+- `CHANGELOG.en.md` removes the non-existent `embeddings.py` submodule description
+- `docs/ARCHITECTURE.md` section 6 "next steps" refactored into "history milestones + v0.5.0 candidate roadmap"
+- `.env.example` adds DASHSCOPE / OLLAMA branch model vars
 
 ## [0.4.1] - 2026-07-07
 
@@ -27,7 +62,7 @@ and version numbers follow [Semantic Versioning](https://semver.org/).
 ### Added
 - **Bilingual docs**: `README.en.md`, `docs/*.en.md` (16 English versions)
 - `mkdocs.yml`: bilingual navigation (中文 / English) + Material theme
-- `examples/_common/` split into submodules: `llm.py`, `embeddings.py`, `io.py`, `calc.py`
+- `examples/_common/` split into submodules: `llm.py`, `io.py`, `calc.py`
 - CI quality gates: mypy + bandit
 - Polished `examples/*.py` docstrings (bilingual ZH/EN)
 
@@ -103,7 +138,9 @@ and version numbers follow [Semantic Versioning](https://semver.org/).
 - `notebooks/`: 7 Jupyter notebooks (0~6)
 - `data/docs/sample.txt`: RAG practice sample document
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/Dajucoder/Agent_study/compare/v0.4.2...v0.5.0
+[0.4.2]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0

@@ -1,6 +1,10 @@
 # 安全策略（Security Policy）
 
 > 🌐 **English version**: [SECURITY.en.md](SECURITY.en.md)
+>
+> 🧭 **导航** · [🏠 项目首页](README.md) · [贡献指南](CONTRIBUTING.md)
+>
+> 🏷️ **类型**：安全策略 · **适合**：报告漏洞者
 
 ## 支持的版本
 

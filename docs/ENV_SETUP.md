@@ -1,6 +1,10 @@
 # 环境搭建（Environment Setup）
 
-> 🌐 **English version**: [ENV_SETUP.en.md](ENV_SETUP.en.md)
+> 🌐 **English version**: [ENV_SETUP.en.md](/en/ENV_SETUP/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [📚 学习路线](LEARNING_GUIDE.md) · 相关：[PROJECT_STRUCTURE 目录结构](PROJECT_STRUCTURE.md) · [学习路线](LEARNING_GUIDE.md)
+>
+> 🏷️ **难度**：入门 · **时长**：约 15 分钟 · **前置**：Python 3.10+ 与可用的 LLM API Key
 
 本章带你在本地把项目跑起来，并能成功调用一次大模型。请严格按步骤操作。
 
@@ -64,7 +68,8 @@ cp .env.example .env
 2. 能调用一次 `ChatOpenAI` 并得到回复。
 3. 若使用 LangSmith，把 `LANGCHAIN_TRACING_V2` 设为 `true` 后调用能在后台看到链路。
 
-> 具体调用写法参见 [01-models-and-prompts.md](01-models-and-prompts.md)，本文档只负责把环境打通。
+!!! tip "提示"
+    具体调用写法参见 [01-models-and-prompts.md](01-models-and-prompts.md)，本文档只负责把环境打通。
 
 ## 6. 启动 Jupyter（推荐）
 

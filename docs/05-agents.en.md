@@ -1,6 +1,10 @@
 # 05 · Agents
 
 > 🌐 **中文版**: [05-agents.md](05-agents.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [📚 Learning Path](/en/LEARNING_GUIDE/) · Prev：[04 Retrieval & RAG](/en/04-retrieval-and-rag/) · Next：[06 Serving & Deployment](/en/06-langserve-and-deployment/) · Related：[04 Retrieval & RAG](/en/04-retrieval-and-rag/) · [06 Serving & Deployment](/en/06-langserve-and-deployment/)
+>
+> 🏷️ **Level**: Intermediate · **Time**: ~30 min · **Prereq**: [04 Retrieval & RAG](/en/04-retrieval-and-rag/)
 
 When the task's steps are unpredictable (you need to "play it by ear"), use **Agent**: let the LLM itself decide which tools to call and in what order.
 

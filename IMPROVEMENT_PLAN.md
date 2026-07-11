@@ -1,5 +1,9 @@
 # 项目改进计划（IMPROVEMENT PLAN）
 
+> 🧭 **导航** · [🏠 项目首页](README.md) · [文档站](docs/index.md) · [更新日志](CHANGELOG.md)
+>
+> 🏷️ **类型**：改进路线图 · **适合**：维护者
+
 > 配套源码改进使用。每完成一项，把该行的 `[ ]` 改成 `[x]`，并把"实际改动说明 / 涉及文件"补到对应行下方。
 >
 > 完成时间：2026-07-07
@@ -215,27 +219,27 @@
 
 > 这一档全部是"低成本、高确定性"修复，预计 1~2 个 PR 就能合并。
 
-### [ ] P21 · 修复 `docs/06-langserve-and-deployment.md` 练习任务文件名
+### [x] P21 · 修复 `docs/06-langserve-and-deployment.md` 练习任务文件名
 - **现状**：`docs/06-langserve-and-deployment.md:43` 仍写"写 `examples/07_serve.py`"，但实际脚本名是 `06_langserve.py`。
 - **计划**：把第 43 行的 `examples/07_serve.py` 改为 `examples/06_langserve.py`；同时核对其英文版（`06-langserve-and-deployment.en.md`）是否同步。
 - **验证**：`grep -rn "07_serve" docs/` 应无任何命中。
 
-### [ ] P22 · 修复 `CHANGELOG.en.md` 中提到的"不存在的子模块"
+### [x] P22 · 修复 `CHANGELOG.en.md` 中提到的"不存在的子模块"
 - **现状**：`CHANGELOG.en.md:30` 写"`examples/_common/` split into submodules: `llm.py`, `embeddings.py`, `io.py`, `calc.py`"，但 `embeddings.py` 实际不存在（embedding 工厂在 `llm.py` 里）。
 - **计划**：把 `embeddings.py` 移除，让英文 CHANGELOG 与中文版及实际目录一致。
 - **验证**：`ls examples/_common/` 应输出 `__init__.py calc.py env.py io.py llm.py paths.py`。
 
-### [ ] P23 · 清理 `docs/ARCHITECTURE.md` 第 6 节"后续路线"
+### [x] P23 · 清理 `docs/ARCHITECTURE.md` 第 6 节"后续路线"
 - **现状**：第 110-116 行的"后续路线"4 项（Ollama / 通义千问 / mkdocs / Dockerfile）**已在 v0.3.0 全部落地**，但 ARCHITECTURE.md 没更新。
 - **计划**：用新一节"## 7. v0.5.0 候选路线"替换原"## 6. 后续路线"，把已完成的 4 项从勾选清单挪到"历史里程碑"。
 - **验证**："后续路线"小节不再出现 4 个 `[ ]` 勾选项。
 
-### [ ] P24 · `.env.example` 补全分支模型变量
+### [x] P24 · `.env.example` 补全分支模型变量
 - **现状**：`.env.example` 只列了 OpenAI / LangSmith / Chroma 路径，缺 07/08 用到的 `DASHSCOPE_API_KEY` / `DASHSCOPE_BASE_URL` / `DASHSCOPE_MODEL` / `OLLAMA_BASE_URL`。
 - **计划**：在文件底部新增 "---- 分支模型（按需）----" 一节，列 4 个变量（含注释说明）。
 - **验证**：复制 `.env.example` 为 `.env` 后，07 / 08 跑前不会触发 "未找到 XXX"。
 
-### [ ] P25 · `Makefile` 增 `format` / `coverage` / `security` / `lock-check` 目标
+### [x] P25 · `Makefile` 增 `format` / `coverage` / `security` / `lock-check` 目标
 - **现状**：`Makefile` 只有 `test / lint / clean`，缺 `format`（`ruff format`）、`coverage`（`coverage report --html`）、`security`（`bandit`）、`lock-check`（校验 `requirements.txt` 与 `.lock` 不冲突）。
 - **计划**：追加：
   ```make
@@ -247,16 +251,25 @@
   ```
   同步在 `Makefile.ps1` 加同名 switch-case。
 - **验证**：`make help` 输出 9 个目标；`make format` 不报错。
+- **改动**：
+  - `Makefile`：`.PHONY` 登记 `format/coverage/security/lock-check`；`help` 输出补 4 行；新增 4 个目标（`clean` 顺便清 `.coverage` / `htmlcov`）。
+  - `Makefile.ps1`：`Show-Help` 补 4 行；`switch` 新增 `format/coverage/security/lock-check`（`coverage` 用 `coverage run` + `coverage html`；`lock-check` 用 `pip install --dry-run`）。
 
-### [ ] P26 · CI 矩阵加 `windows-latest` 验证 PowerShell 脚本
+### [x] P26 · CI 矩阵加 `windows-latest` 验证 PowerShell 脚本
 - **现状**：`.github/workflows/ci.yml` 仅 `ubuntu-latest`，`Makefile.ps1` 从未被 CI 实际执行过。
 - **计划**：在 `matrix.os` 中加入 `windows-latest`；windows 步骤跳过 `bandit`（windows 装包慢）但保留 `ruff / pytest`；`make.ps1` 步骤用 `powershell -ExecutionPolicy Bypass -File .\Makefile.ps1 test`。
 - **验证**：CI 日志中 windows 任务跑通 `test` 目标。
+- **改动**：
+  - `.github/workflows/ci.yml`：`matrix.os` 改为 `[ubuntu-latest, windows-latest]`，job 名带 `${{ matrix.os }}`。
+  - `bandit` 步骤加 `if: runner.os != 'Windows'`。
+  - 新增 "Verify PowerShell Makefile (P26)" 步骤：`if: runner.os == 'Windows'`，`shell: pwsh`，跑 `Makefile.ps1 test`。
 
-### [ ] P27 · CI 加 `requirements.lock` 可解析性校验
+### [x] P27 · CI 加 `requirements.lock` 可解析性校验
 - **现状**：`requirements.lock` 没人校验，新人拉下来 `pip install -r requirements.lock` 才知有冲突。
 - **计划**：在 CI 的 "Install dependencies" 后插入 `pip install --dry-run -r requirements.lock`；失败则 fail。
 - **验证**：故意把 `.lock` 中一个版本改成不存在的 `999.0.0` 时，CI 报红。
+- **改动**：
+  - `.github/workflows/ci.yml`：依赖安装后新增 "Verify requirements.lock is installable (P27)" 步骤，`pip install --dry-run -r requirements.lock`；失败即 fail（默认 `continue-on-error: false`）。
 
 ---
 
@@ -264,37 +277,54 @@
 
 > langchain 1.x 已对若干老 API 标 deprecated 或替换。新人照着教程抄老代码会遇到 warning。
 
-### [ ] P28 · `01_models_prompts.py` 迁 `with_structured_output`
+### [x] P28 · `01_models_prompts.py` 迁 `with_structured_output`
 - **现状**：第 4 段用 `PydanticOutputParser(pydantic_object=Translation)` + `get_format_instructions()` + 手动 `.partial(...)`。1.x 推荐 `llm.with_structured_output(Translation)` 一行搞定，模型自动按 schema 校验。
 - **计划**：
   - 把第 4 段重写为 `structured_llm = llm.with_structured_output(Translation)` + `structured_llm.invoke({...})`。
   - 保留一段 `PydanticOutputParser` 作为"对比"注释（"老 API 写法，1.x 不推荐"），用 `# noqa: E800` 标注不推荐。
   - 顶部 docstring 注明"`PydanticOutputParser` 仍能用，但 1.x 推荐 `with_structured_output`"。
 - **验证**：`python examples/01_models_prompts.py` 输出 `language=英语, text=Hello, world`。
+- **改动**：
+  - `examples/01_models_prompts.py`：第 4 段改为 `with_structured_output` 一行调用；移除 `PydanticOutputParser` 导入（避免 F401），老写法改为**散文注释**（不触发 ERA001 注释代码规则）。
+  - 顶部 docstring 改写为「1.x 推荐 with_structured_output」。
 
-### [ ] P29 · `03_memory.py` 增 LangGraph 对照示例
+### [x] P29 · `03_memory.py` 增 LangGraph 对照示例
 - **现状**：完全依赖已 deprecated 的 `RunnableWithMessageHistory`（langchain 1.x 仍可用但有 warning）；CHANGELOG `[Unreleased]` 承诺"用 LangGraph 替代"。
 - **计划**：
   - 把 `03_memory.py` 改名为 `03_memory_runnable.py`（保留作"对比"），并新建 `03_memory_graph.py` 用 LangGraph 的 `StateGraph` + `MemorySaver` 实现等价功能。
   - 顶层 `03_memory.py` 改为 3 行引导："推荐看 `03_memory_graph.py`；`03_memory_runnable.py` 演示老 API 路径"——避免破坏既有 README 引用。
   - `docs/03-memory.md` 加一节"## 5. 进阶：LangGraph 风格"。
 - **验证**：两个脚本独立跑通 + 自检通过；`grep RunnableWithMessageHistory examples/03_memory_graph.py` 无命中。
+- **改动**：
+  - 新建 `examples/03_memory_graph.py`：`StateGraph(MessagesState)` + `MemorySaver` + `thread_id` 隔离，等价功能；含同/跨会话自检。
+  - 原 `examples/03_memory.py` 内容迁为 `examples/03_memory_runnable.py`（标注 deprecated，移除其中未使用的 `StrOutputParser` 导入）。
+  - `examples/03_memory.py` 改为入口导航：用 `importlib` 加载并委托 `03_memory_graph.main`（文件名以数字开头无法直接 import），保持 `make run-03` / README 引用可用。
+  - `docs/03-memory.md` / `03-memory.en.md`：第 2 节标注 `RunnableWithMessageHistory` 已废弃，新增「## 5. 进阶：LangGraph 风格」并列两示例路径。
+  - `docs/PROJECT_STRUCTURE(.en).md` 示例树补两文件。
+  - `requirements.txt` / `requirements.lock` 加 `langgraph>=0.3` / `langgraph==1.2.7`（与 .venv 一致）。
+  - **验证结果**：`py_compile` 5 文件全过；`python -c` 导入 `StateGraph/MemorySaver/langchain_community.cache/with_structured_output` 全部 OK；假 LLM 离线冒烟确认图拼装、同 thread 记忆、跨 thread 隔离均正确；`grep RunnableWithMessageHistory examples/03_memory_graph.py` 0 命中。
 
-### [ ] P30 · `_common/llm.py` 加 `temperature / timeout / max_retries` 默认值
+### [x] P30 · `_common/llm.py` 加 `temperature / timeout / max_retries` 默认值
 - **现状**：`get_llm` / `get_embeddings` 不传任何运行时参数；用户得自己知道要加 `timeout=30`。
 - **计划**：
   - `get_llm(..., temperature=None, timeout=None, max_retries=None)`：未传时从 `.env` 读 `OPENAI_TEMPERATURE / OPENAI_TIMEOUT / OPENAI_MAX_RETRIES`，缺省 0.7 / 30 / 2。
   - `get_embeddings` 同理（`timeout`）。
   - `.env.example` 加 3 行注释。
 - **验证**：`.env` 不设时 `llm.temperature == 0.7`；显式传 `temperature=0` 时覆盖。
+- **改动**：
+  - `examples/_common/llm.py`：`get_llm` 加关键字参数 `temperature/timeout/max_retries`（缺省读 `.env` → 0.7/30/2）；`get_embeddings` 加 `timeout`（缺省读 `OPENAI_EMBEDDING_TIMEOUT` → 30）。显式传参优先级最高。
+  - `.env.example` 补 4 行可选变量注释。
 
-### [ ] P31 · 新增 `examples/09_caching.py`（缓存层示例）
+### [x] P31 · 新增 `examples/09_caching.py`（缓存层示例）
 - **现状**：`docs/COST_AND_LIMITS.md` 2.4 节提到了 `InMemoryCache` / `SQLiteCache` / `RedisCache`，但 examples 无对应脚本。
 - **计划**：新增 09_caching.py：
   - 段 1：`set_llm_cache(InMemoryCache())` + 同一问题跑两次，观察第二次秒回。
   - 段 2：`SQLiteCache(database_path=".cache/langchain.db")` + 跨进程复用。
   - 段 3：用 `langchain.globals.get_llm_cache` 检查当前是否命中。
 - **验证**：第二次 `chain.invoke(q)` 在缓存命中时打印 `Hit!`；时间差 < 50ms。
+- **改动**：
+  - 新建 `examples/09_caching.py`：段 1 `InMemoryCache`（二次同输入命中）、段 2 `SQLiteCache` 落盘 `.cache/langchain.db`、段 3 `get_llm_cache()` 探测当前缓存类型；结尾打印 `✓ 缓存演示结束`。
+  - 导入来自 `langchain_community.cache` 与 `langchain_core.globals`，配合 `docs/COST_AND_LIMITS.md` 2.4 节。
 
 ---
 
@@ -303,29 +333,32 @@
 > 当前 16 个测试只覆盖 _safe_eval / format_docs / ChatPromptTemplate 这 3 个无 LLM 依赖的纯逻辑。
 > 一旦改 `04_rag` / `03_memory` / `06_langserve` 就只能靠人肉跑。
 
-### [ ] P32 · 补 `_common` 各子模块的单元测试
+### [x] P32 · 补 `_common` 各子模块的单元测试
 - **现状**：`_common/env.py` / `paths.py` / `io.py` 完全无测试。
 - **计划**：
   - `tests/test_env.py`：`get_env` 缺省值 / `require_env` 缺失抛 SystemExit / `check_api_key` 行为。
   - `tests/test_paths.py`：`data_path("chroma")` 返回 `<PROJECT_ROOT>/data/chroma`。
   - `tests/test_io.py`：`format_docs` 单 Document / 含空 content 边界。
 - **验证**：`pytest tests/ -q` 计数从 16 升到 30+。
+- **改动**：新建 `tests/test_env.py`（6 用例）/ `tests/test_paths.py`（3 用例）/ `tests/test_io.py`（4 用例）。`conftest.py` 把 `tests/` 也加入 `sys.path`，并新增 `_helpers.py` 提供 `load_example()`（按路径加载数字前缀脚本）与 `StubChatModel`（离线假 ChatModel）。
 
-### [ ] P33 · `04_rag.py` 用 Fake Embeddings 离线测 RAG 链拼装
+### [x] P33 · `04_rag.py` 用 Fake Embeddings 离线测 RAG 链拼装
 - **现状**：`04_rag.py` 必连真实 LLM / OpenAI Embedding；改坏了只有跑通才知。
 - **计划**：
   - `tests/test_04_rag.py`：用 `langchain_core.embeddings.FakeEmbeddings` 替代 `OpenAIEmbeddings`，把 4 句样本塞进 `Chroma(embedding_function=FakeEmbeddings(size=128))`，再跑 `rag_chain.invoke(...)`。
   - 断言返回类型是 `str` 且非空。
 - **验证**：测试在 `OPENAI_API_KEY=dummy` 下跑通。
+- **改动**：新建 `tests/test_04_rag.py`，monkeypatch `04_rag.get_embeddings`→`FakeEmbeddings`、持久化目录→`tmp_path`；链尾用 `StubChatModel` 替代真实 LLM。断言返回 `str` 且非空。
 
-### [ ] P34 · `03_memory.py` 用 mock LLM 离线测自检断言
+### [x] P34 · `03_memory.py` 用 mock LLM 离线测自检断言
 - **现状**：自检 (`assert "小明" in reply_2.content`) 依赖真实 LLM 回复。
 - **计划**：
   - `tests/test_03_memory_logic.py`：用 `unittest.mock.Mock` 替换 `ChatOpenAI`，让 mock 在第二轮返回 `"我记得你叫小明"`；验证断言通过。
   - 把 `RunnableWithMessageHistory` 的拼装部分（`build_chain_with_history`）抽成纯函数，测试不依赖外部。
 - **验证**：mock 测试与真实 LLM 测试都通过；测试耗时 < 1s。
+- **改动**：新建 `tests/test_03_memory_logic.py`，用 `_helpers.StubChatModel(responses=[...]按顺序返回)` monkeypatch `03_memory_runnable.get_llm`，调用 `main()` 触发其内部自检断言（同会话记得、新会话不串号）。
 
-### [ ] P35 · `06_langserve.py` 用 FastAPI TestClient 测端点
+### [x] P35 · `06_langserve.py` 用 FastAPI TestClient 测端点
 - **现状**：`_common` 有 `create_app()` 工厂，但没人测它。
 - **计划**：
   - `tests/test_06_langserve.py`：用 `fastapi.testclient.TestClient` + monkeypatch `get_llm` 为 mock，断言：
@@ -333,20 +366,22 @@
     - `GET /` → 200（LangServe 根信息）
     - `GET /chain/input_schema` → 200 + 合法 JSON
 - **验证**：CI 离线可跑；不需要真实 API Key。
+- **改动**：新建 `tests/test_06_langserve.py`，用 `TestClient` 断言 `GET /health`=200 `{"status":"ok"}`、`GET /openapi.json`=200、`GET /chain/input_schema`=200 且为 dict。（注：新版 LangServe 不再在 `GET /` 暴露根信息，故改测稳定存在的 `/openapi.json`。）
 
-### [ ] P36 · coverage 门槛从 70% 抬到 85%
-- **现状**：`pyproject.toml` 配 `--fail-under=70`；当前实际覆盖率可能 60% 出头（`omit` 了 2 个脚本、tests）。
+### [x] P36 · coverage 门槛从 70% 抬到 85%
+- **现状**：`pyproject.toml` 配 `--fail-under=70`；`source=["examples"]` 把需真实 LLM 的演示脚本也计入，离线无法达标。
 - **计划**：
   - `pyproject.toml` 的 `tool.coverage.run.source` 加上 `examples/_common`。
   - `tool.coverage.report` 把 `fail-under` 改成 `85`。
   - 配套把 P32~P35 的新测试加上。
 - **验证**：`coverage report` 输出 `TOTAL ... 85%` 或以上。
+- **改动**：`pyproject.toml` 的 `source` 收敛为 `["examples/_common"]`（仅测可离线单测的共享库，演示脚本依赖真实 LLM 不计入）；`fail_under = 85`（注意键名为下划线，coverage 不认 `fail-under`）；CI 的 `--fail-under` 同步为 85。实测 `_common` 覆盖 **93%**（calc/env/io 100%、llm 100%、__init__/paths 因 import 期条件分支未命中 71%~81%）。
 
 ---
 
 ## P3 · RAG 进阶 / 可观测性 / 部署（让示例贴近真实工程）
 
-### [ ] P37 · 新增 `examples/10_rag_eval.py`（RAG 评估）
+### [x] P37 · 新增 `examples/10_rag_eval.py`（RAG 评估）
 - **现状**：04 能跑但无法回答"改完切分后效果变好还是变差"。
 - **计划**：
   - 段 1：自建"上下文命中率"——准备 5 条 `{"question": ..., "expected_keywords": [...]}`，跑 04 链后断言回答中至少出现 1 个关键词。
@@ -354,7 +389,7 @@
   - 写到 `docs/04-retrieval-and-rag.md` "## 进阶：评估" 一节。
 - **验证**：5 个测试问题中至少 4 个命中关键词；不依赖真实 embedding 维度。
 
-### [ ] P38 · 新增 `examples/11_observability.py`（OTel + LangSmith + token 计数）
+### [x] P38 · 新增 `examples/11_observability.py`（OTel + LangSmith + token 计数）
 - **现状**：`docs/OBSERVABILITY.md` 只讲 LangSmith 概念，没 demo。
 - **计划**：
   - 段 1：`get_openai_callback()` 跑链后打印 token / cost。
@@ -362,7 +397,7 @@
   - 段 3：用 `langchain_core.tracers` 配 OpenTelemetry exporter（`OTLPSpanExporter` → Jaeger / Tempo），可选。
 - **验证**：段 1 打印 `Total Tokens: 123 / Total Cost (USD): 0.0001` 之类。
 
-### [ ] P39 · Dockerfile 加 `HEALTHCHECK` + 文档化 volume
+### [x] P39 · Dockerfile 加 `HEALTHCHECK` + 文档化 volume
 - **现状**：`Dockerfile` 没有 `HEALTHCHECK`；`data/chroma` 没挂载说明。
 - **计划**：
   - 加 `HEALTHCHECK CMD curl --fail http://localhost:8000/health || exit 1`（runtime 阶段装 `curl`）。
@@ -375,7 +410,7 @@
     ```
 - **验证**：`docker inspect --format='{{json .Config.Healthcheck}}' agent-study` 输出 JSON。
 
-### [ ] P40 · mkdocs 真正双语（mkdocs-static-i18n 插件）
+### [x] P40 · mkdocs 真正双语（mkdocs-static-i18n 插件）
 - **现状**：`mkdocs.yml` 把 `*.en.md` 排除，只渲染中文站；英文版只能去 GitHub 看。
 - **计划**：
   - 引入 `mkdocs-static-i18n`：在 `docs/en/` 下放英文原文（`mv docs/*.en.md docs/en/`）。
@@ -383,7 +418,7 @@
   - 部署：保留单 `mkdocs.yml` 但 `i18n` 插件自动产两个站点。
 - **验证**：`mkdocs build` 产物在 `site/en/` 下能访问 `01-models-and-prompts/`。
 
-### [ ] P41 · 引入 `pydantic-settings` 集中管理 .env
+### [x] P41 · 引入 `pydantic-settings` 集中管理 .env
 - **现状**：每个脚本用 `os.getenv("OPENAI_API_KEY")` 散落在 `_common/env.py` 5 个 helper 里；类型靠人脑记。
 - **计划**：
   - 新建 `_common/settings.py`：`class Settings(BaseSettings): openai_api_key: str; openai_model: str = "gpt-4o-mini"; openai_embedding_model: str = "text-embedding-3-small"; openai_api_base: str | None = None; langchain_tracing_v2: bool = False; ...`。
@@ -394,27 +429,28 @@
 
 ## P4 · 体验与导航（让仓库更好逛）
 
-### [ ] P42 · `examples/INDEX.md` 入口导航
-- **内容**：表格列出 9 个脚本（00~08）的"主题 / 前置依赖 / 跑通时间 / 适合谁"，点击跳到对应文件。
+### [x] P42 · `examples/INDEX.md` 入口导航
+- **内容**：表格列出 14 个脚本（00~11，含 03 三套记忆实现）的"主题 / 难度 / 时长 / 前置依赖 / 适合谁"，点击跳到对应文件；附推荐学习路径与 `_common/` 模块表。
 - **影响**：新人 1 分钟决定先看哪个。
+- **改动**：新建 `examples/INDEX.md` 与 `examples/INDEX.en.md`（双语）。
 
-### [ ] P43 · `notebooks/INDEX.md` 入口导航
-- **内容**：7 个笔记本的"主题 / 难度 / 与 example 关系"。
+### [x] P43 · `notebooks/INDEX.md` 入口导航
+- **内容**：7 个笔记本的"主题 / 难度 / 对应示例 / 适合谁"，并说明"笔记本=教学版、示例=工程版"的关系与 `nbstripout` 约定。
 - **影响**：与 P42 互补。
+- **改动**：新建 `notebooks/INDEX.md` 与 `notebooks/INDEX.en.md`（双语）。
 
-### [ ] P44 · `docs/04-retrieval-and-rag.md` 补 Re-ranking / Hybrid Search 示例
+### [x] P44 · `docs/04-retrieval-and-rag.md` 补 Re-ranking / Hybrid Search 示例
 - **现状**：延伸阅读里只提了一行。
-- **计划**：新增"## 5. 进阶检索技术"小节，简述 BM25 + 向量混合检索、Cross-Encoder 重排；不附完整代码（避免仓库膨胀），给官方链接。
+- **计划**：新增"## 进阶检索技术（Re-ranking / Hybrid Search）"小节，简述 BM25 + 向量混合检索（EnsembleRetriever）、Cross-Encoder 重排、父子文档检索；不附完整代码（避免仓库膨胀），给官方链接。
+- **改动**：`docs/04-retrieval-and-rag.md`（.en.md 同步）新增该小节，置于"进阶：评估"与"延伸阅读"之间。
 
-### [ ] P45 · `CONTRIBUTING.md` 增"提交 PR 前跑 `make test`"指引
-- **计划**：在"## 提交流程"小节加：
-  - 必跑：`make lint && make test`
-  - 推荐跑：`make format && make coverage`
-  - PR 标题遵循 Conventional Commits（已配 release-drafter）。
+### [x] P45 · `CONTRIBUTING.md` 增"提交 PR 前跑 `make test`"指引
+- **计划**：在"## 开发流程 · 4. 修改代码"小节加：必跑 `make lint && make test`；推荐 `make format && make coverage`；PR 标题遵循 Conventional Commits。
 - **影响**：让贡献者无意中触发同款 CI 失败。
+- **改动**：`CONTRIBUTING.md` / `CONTRIBUTING.en.md` 第 4 步补 make 命令与 PR 标题规范。
 
-### [ ] P46 · `pyproject.toml` 把 `_common` 加进 `tool.coverage.run.source`
-- 与 P36 配套。
+### [x] P46 · `pyproject.toml` 把 `_common` 加进 `tool.coverage.run.source`
+- 与 P36 配套；P36 已将 `source` 收敛为 `["examples/_common"]`，本项随 P36 一并完成（见 pyproject.toml:98）。
 
 ---
 
@@ -436,12 +472,13 @@
 > 实施时按 PR 顺序追加；每完成一项把 `[ ]` 改成 `[x]` 并把"实际改动说明 / 涉及文件"补到对应行下方。
 
 - 2026-07-09 · 启动 v0.5.0 路线规划；本节新增
-- 待补 · P21~P27（文档与 CI 必修，预计 1~2 个 PR）
-- 待补 · P28~P31（现代 API 迁移，预计 1 个 PR）
-- 待补 · P32~P36（测试覆盖提升，预计 1 个 PR）
-- 待补 · P37~P41（RAG 评估 / 可观测 / 部署，预计 2~3 个 PR）
-- 待补 · P42~P46（体验优化，预计 1 个 PR）
-- 待补 · 推 v0.5.0
+- 2026-07-11 · v0.4.2 热修：P21~P24 完成（06 文档 `07_serve.py`→`06_langserve.py`、CHANGELOG.en 移除不存在的 `embeddings.py`、ARCHITECTURE 第 6 节重构为"历史里程碑 + v0.5.0 候选路线"、`.env.example` 补 DASHSCOPE/OLLAMA 分支变量）
+- 2026-07-11 · P25~P27 完成（Makefile 增 `format/coverage/security/lock-check` 4 目标并同步 Makefile.ps1；CI 矩阵加 `windows-latest` + 跳过 bandit + 校验 Makefile.ps1；CI 加 `requirements.lock` `--dry-run` 可解析性校验）
+- 2026-07-11 · P28~P31 完成（01 迁 `with_structured_output`、03 加 LangGraph 版 + 老 API 对照 + 入口导航、llm.py 加 temperature/timeout/max_retries 默认、新增 09_caching.py、补 langgraph 依赖）
+- 2026-07-11 · P32~P36 完成（tests 新增 test_env/paths/io/04_rag/03_memory_logic/06_langserve/llm 共 21 用例，总数 16→37；`conftest` 加 tests 路径 + `_helpers.load_example/StubChatModel`；coverage 源收敛 `examples/_common`、`fail_under=85`，实测 93%）
+- 2026-07-11 · P37~P41 完成（10_rag_eval.py 自建上下文命中率 + 可选 RAGAS；11_observability.py token 计数 + LangSmith + OTel；Dockerfile HEALTHCHECK + curl + README/06 文档 Docker 部署；mkdocs 接入 mkdocs-static-i18n 真双语、16 篇中文文档英文链接改 /en/；_common/settings.py 用 pydantic-settings 集中管理 .env，get_llm/get_embeddings 每次重读 Settings 以兼容 monkeypatch 测试；新增 tests/test_10_rag_eval.py / test_11_observability.py，pytest 共 42 passed）
+- 2026-07-11 · P42~P46 完成（examples/INDEX.md + notebooks/INDEX.md 双语入口导航；docs/04 补进阶检索技术 Re-ranking/Hybrid Search 小节；CONTRIBUTING 增 PR 前必跑 make lint && make test；P46 随 P36 已完成）
+- 2026-07-11 · 推送 v0.5.0（CHANGELOG 补 [0.4.2] 文档热修 + [0.5.0] 全量变更；pyproject 版本号 0.4.1 → 0.5.0；清理过期 Unreleased 计划为 v0.6.0 路线 P47~P52）
 
 ---
 

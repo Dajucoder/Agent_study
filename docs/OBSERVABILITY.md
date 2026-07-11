@@ -1,6 +1,10 @@
 # 可观测性（Observability）
 
-> 🌐 **English version**: [OBSERVABILITY.en.md](OBSERVABILITY.en.md)
+> 🌐 **English version**: [OBSERVABILITY.en.md](/en/OBSERVABILITY/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [ARCHITECTURE 架构总览](ARCHITECTURE.md) · [成本与限制](COST_AND_LIMITS.md) · 相关：[06 服务化与部署](06-langserve-and-deployment.md)
+>
+> 🏷️ **难度**：进阶 · **时长**：约 15 分钟 · **前置**：[06 服务化与部署](06-langserve-and-deployment.md)
 
 > 本章讲清"如何看一次 LLM 调用发生了什么"——这是把 demo 升级为可维护系统的关键一步。
 
@@ -111,6 +115,14 @@ print(prompt_value.to_string())
 import langchain
 langchain.debug = True
 ```
+
+## 7. 可运行示例
+
+概念落到可跑代码见 [examples/11_observability.py](../examples/11_observability.py)：
+
+- 段 1：用 `get_openai_callback` 统计一次调用的 token 与花费；
+- 段 2：LangSmith tracing 引导（开关在 `.env` 的 `LANGCHAIN_TRACING_V2`）；
+- 段 3：配置 OpenTelemetry `OTLPSpanExporter`（可选，需 `opentelemetry` 相关包）。
 
 ## 6. 参考
 

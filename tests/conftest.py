@@ -8,7 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXAMPLES = ROOT / "examples"
-for p in (ROOT, EXAMPLES):
+TESTS = ROOT / "tests"
+for p in (ROOT, EXAMPLES, TESTS):
     sp = str(p)
     if sp not in sys.path:
         sys.path.insert(0, sp)

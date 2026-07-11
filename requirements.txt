@@ -22,12 +22,18 @@ langchain-text-splitters>=1.0
 # ---- 向量库（入门推荐 Chroma）----
 chromadb>=1.0
 
+# ---- 图编排（运行 examples/03_memory_graph.py 需要）----
+langgraph>=0.3
+
 # ---- 嵌入与 OpenAI 客户端 ----
 openai>=1.30
 tiktoken>=0.7
 
 # ---- 环境变量管理 ----
 python-dotenv>=1.0
+
+# ---- 配置管理（P41：pydantic-settings 集中管理 .env）----
+pydantic-settings>=2.0
 
 # ---- 可观测性（可选，LangSmith）----
 # 安装：pip install langsmith
@@ -44,3 +50,7 @@ notebook>=7.0
 
 # ---- 测试（可选）----
 # pip install pytest ruff
+
+# ---- 文档站（构建 mkdocs 站点，可选；CI 在 .github/workflows/mkdocs.yml 中安装）----
+# mkdocs mkdocs-material mkdocs-static-i18n
+# 注：mkdocs-static-i18n 负责把 docs/*.en.md 渲染为 /en/ 双语子站点（P40）

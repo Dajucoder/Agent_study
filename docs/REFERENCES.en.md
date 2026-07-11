@@ -1,6 +1,10 @@
 # References
 
 > 🌐 **中文版**: [REFERENCES.md](REFERENCES.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [GLOSSARY](/en/GLOSSARY/) · [Learning Path](/en/LEARNING_GUIDE/)
+>
+> 🏷️ **Type**: Reference index · **Time**: on-demand · **Prereq**: none
 
 > External docs, tutorials, and tools commonly used during learning, grouped by topic.
 

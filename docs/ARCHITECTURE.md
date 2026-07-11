@@ -1,6 +1,10 @@
 # 架构总览（Architecture）
 
-> 🌐 **English version**: [ARCHITECTURE.en.md](ARCHITECTURE.en.md)
+> 🌐 **English version**: [ARCHITECTURE.en.md](/en/ARCHITECTURE/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [PROJECT_STRUCTURE 目录结构](PROJECT_STRUCTURE.md) · [成本与限制](COST_AND_LIMITS.md) · [可观测性](OBSERVABILITY.md)
+>
+> 🏷️ **类型**：架构参考 · **时长**：约 20 分钟 · **前置**：完成教程 01~06
 
 > 写给"想从全局理解项目"的读者。读完后你应该能用一张图画清本项目的模块关系。
 
@@ -107,9 +111,14 @@ CI 用 `OPENAI_API_KEY=dummy` 占位即能跑通。
 | 新 CI 任务 | `.github/workflows/*.yml` |
 | 新测试 | `tests/test_xxx.py` |
 
-## 6. 后续路线
+## 6. 历史里程碑（v0.3.0 已落地）
 
-- [ ] Ollama / 通义千问分支示例
-- [ ] LangGraph 替代 RunnableWithMessageHistory
-- [ ] 引入 `mkdocs` 文档站点
-- [ ] Dockerfile 镜像
+- Ollama / 通义千问分支示例（`examples/07_ollama_local.py`、`examples/08_qwen.py`）
+- `mkdocs` 文档站点（Material 主题 + GitHub Pages 自动部署）
+- Dockerfile 多阶段镜像
+
+## 7. v0.5.0 候选路线
+
+- LangGraph 替代 `RunnableWithMessageHistory`（见改进计划 P29）
+- RAG 评估与可观测性增强（见 P37 / P38）
+- `uv` 替换 `pip`、多向量库后端（见 P50 / P51）

@@ -1,6 +1,10 @@
 # 学习路线总纲（Learning Guide）
 
-> 🌐 **English version**: [LEARNING_GUIDE.en.md](LEARNING_GUIDE.en.md)
+> 🌐 **English version**: [LEARNING_GUIDE.en.md](/en/LEARNING_GUIDE/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [环境搭建](ENV_SETUP.md) · [01 模型与提示词](01-models-and-prompts.md) · [目录结构](PROJECT_STRUCTURE.md)
+>
+> 🏷️ **难度**：入门 · **时长**：约 10 分钟 · **前置**：[环境搭建](ENV_SETUP.md)
 
 本文档给出推荐的 LangChain 学习顺序与每阶段的目标、投入时间建议。请配合 `docs/0x-*.md` 各章节文档与 `notebooks/`、`examples/` 中的动手练习。
 

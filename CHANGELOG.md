@@ -1,16 +1,52 @@
 # 更新日志（Changelog）
 
 > 🌐 **English version**: [CHANGELOG.en.md](CHANGELOG.en.md)
+>
+> 🧭 **导航** · [🏠 项目首页](README.md) · [改进计划](IMPROVEMENT_PLAN.md) · [贡献指南](CONTRIBUTING.md)
+>
+> 🏷️ **类型**：版本记录 · **适合**：想了解变更者
 
 本项目所有值得注意的变更都记录在此文件。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号遵循 [语义化版本（Semantic Versioning）](https://semver.org/lang/zh-CN/)。
 
 ## [Unreleased]
 
-### 计划中
-- 引入 LangGraph 替代 `RunnableWithMessageHistory`
-- 增加 `mkdocs` 文档站自定义主题
-- 添加 `Dockerfile` 最佳实践示例（如多阶段构建缓存）
+### 计划中（v0.6.0 路线 · 见 IMPROVEMENT_PLAN P47~P52）
+- LangGraph 完整示例（multi-agent / human-in-the-loop，P47）
+- Notebook 回归测试（nbval + nbstripout，P48）
+- OpenTelemetry 全面接入（P49）
+- uv 替换 pip 自动生成锁文件（P50）
+- 多向量库后端示例 FAISS / Qdrant / Milvus（P51）
+- 流式 Web UI 演示（SSE 实时回显，P52）
+
+## [0.5.0] - 2026-07-11
+
+### 新增
+- **现代 API**：`01_models_prompts.py` 迁 `with_structured_output`；`03_memory_graph.py`（LangGraph `StateGraph` + `MemorySaver`）+ 老 API 对照 `03_memory_runnable.py` + 入口导航 `03_memory.py`
+- `examples/09_caching.py`：缓存层（`InMemoryCache` / `SQLiteCache`）
+- `examples/10_rag_eval.py`：RAG 评估（自建上下文命中率 + 可选 RAGAS）
+- `examples/11_observability.py`：可观测性（token 计数 + LangSmith + OpenTelemetry）
+- `examples/INDEX.md` / `notebooks/INDEX.md`（含 `.en.md` 英文版）：示例与笔记本入口导航
+- **mkdocs 真双语**：接入 `mkdocs-static-i18n`（suffix 模式，自动生成 `/en/` 子站 + 语言切换器）；32 篇文档内 `](X.en.md)` 链接统一改为 `/en/X/`
+- **配置集中化**：引入 `pydantic-settings`（`examples/_common/settings.py` 集中管理 `.env`）
+- **Docker 部署**：`Dockerfile` 加 `HEALTHCHECK`（探测 `/health`）+ 装 `curl`；`README` / `docs/06` 补 Docker 运行示例（含 `-v data/chroma` 挂载）
+- 测试新增 `test_env` / `test_paths` / `test_io` / `test_04_rag` / `test_03_memory_logic` / `test_06_langserve` / `test_10_rag_eval` / `test_11_observability`，共 **42 用例**
+
+### 变更
+- `_common/llm.py` 加 `temperature / timeout / max_retries` 默认；`get_llm` / `get_embeddings` 透传 `openai_api_base`
+- `docs/04-retrieval-and-rag.md` 补「进阶：评估」「进阶检索技术（Re-ranking / Hybrid Search）」
+- `CONTRIBUTING.md` 增"提交 / 提 PR 前必跑 `make lint && make test`"指引
+- CI：矩阵加 `windows-latest` 校验 `Makefile.ps1`；加 `requirements.lock` 可解析性校验（`--dry-run`）；coverage 源收敛 `examples/_common` 且 `fail_under=85`（实测 93%）
+- `Makefile` / `Makefile.ps1` 增 `format` / `coverage` / `security` / `lock-check` 目标
+- 依赖：`langgraph`、`pydantic-settings` 进 `requirements.txt` / `requirements.lock`
+
+## [0.4.2] - 2026-07-11
+
+### 变更（文档一致性热修）
+- 修复 `docs/06-langserve-and-deployment.md` 练习任务文件名 `07_serve.py` → `06_langserve.py`
+- `CHANGELOG.en.md` 移除不存在的 `embeddings.py` 子模块描述
+- `docs/ARCHITECTURE.md` 第 6 节"后续路线"重构为"历史里程碑 + v0.5.0 候选路线"
+- `.env.example` 补全 DASHSCOPE / OLLAMA 分支模型变量
 
 ## [0.4.1] - 2026-07-07
 
@@ -99,7 +135,9 @@
 - `notebooks/`：7 个 Jupyter 笔记本（0~6）
 - `data/docs/sample.txt`：RAG 练习示例文档
 
-[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/Dajucoder/Agent_study/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/Dajucoder/Agent_study/compare/v0.4.2...v0.5.0
+[0.4.2]: https://github.com/Dajucoder/Agent_study/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/Dajucoder/Agent_study/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/Dajucoder/Agent_study/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Dajucoder/Agent_study/compare/v0.2.1...v0.3.0

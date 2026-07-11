@@ -1,6 +1,10 @@
 # Security Policy
 
 > 🌐 **中文版**: [SECURITY.md](SECURITY.md)
+>
+> 🧭 **Navigate** · [🏠 Project Home](README.en.md) · [Contributing](CONTRIBUTING.en.md)
+>
+> 🏷️ **Type**: Security policy · **For**: vulnerability reporters
 
 ## Supported Versions
 

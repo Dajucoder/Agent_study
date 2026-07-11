@@ -1,6 +1,10 @@
 # 目录结构与模块说明（Project Structure）
 
-> 🌐 **English version**: [PROJECT_STRUCTURE.en.md](PROJECT_STRUCTURE.en.md)
+> 🌐 **English version**: [PROJECT_STRUCTURE.en.md](/en/PROJECT_STRUCTURE/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [环境搭建](ENV_SETUP.md) · [ARCHITECTURE 架构总览](ARCHITECTURE.md)
+>
+> 🏷️ **类型**：项目地图 · **时长**：约 5 分钟 · **前置**：无
 
 本文件说明项目每个目录/文件的用途，以及你在学习过程中应当**亲手创建**的内容。文档不替你写代码，只指明"应该写出什么"。
 
@@ -55,12 +59,17 @@ examples/
 ├── 00_check.py               # 前导脚本：环境验证（先跑这个）
 ├── 01_models_prompts.py      # 模型与提示词
 ├── 02_chains.py              # 链（LCEL）
-├── 03_memory.py              # 记忆
+├── 03_memory.py              # 记忆（入口：默认演示 LangGraph 版）
+├── 03_memory_graph.py       # 记忆 · LangGraph 风格（推荐，1.x）
+├── 03_memory_runnable.py    # 记忆 · 老 API 对照（RunnableWithMessageHistory，已废弃）
 ├── 04_rag.py                 # 检索与 RAG
 ├── 05_agents.py              # 代理
 ├── 06_langserve.py           # 服务化（LangServe）
 ├── 07_ollama_local.py        # 本地模型（Ollama，零成本）
-└── 08_qwen.py                # 通义千问（DashScope 兼容模式）
+├── 08_qwen.py                # 通义千问（DashScope 兼容模式）
+├── 09_caching.py            # 缓存层（InMemory / SQLite）
+├── 10_rag_eval.py          # RAG 评估（上下文命中率 + 可选 RAGAS）
+└── 11_observability.py     # 可观测性实战（token 计数 + LangSmith + OTel）
 ```
 
 每个脚本应能在激活虚拟环境后，通过 `python examples/0x_xxx.py` 直接运行。

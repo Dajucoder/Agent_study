@@ -1,6 +1,10 @@
 # Glossary
 
 > 🌐 **中文版**: [GLOSSARY.md](GLOSSARY.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [REFERENCES](/en/REFERENCES/) · Related：[01 Models & Prompts](/en/01-models-and-prompts/) · [04 Retrieval & RAG](/en/04-retrieval-and-rag/)
+>
+> 🏷️ **Type**: Glossary · **Time**: on-demand · **Prereq**: none
 
 > Explanations of terms you may encounter while learning. **You don't need to understand them all at once** — look them up here when you meet an unfamiliar term.
 

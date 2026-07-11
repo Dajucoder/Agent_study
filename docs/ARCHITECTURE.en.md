@@ -1,6 +1,10 @@
 # Architecture Overview
 
 > 🌐 **中文版**: [ARCHITECTURE.md](ARCHITECTURE.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [PROJECT_STRUCTURE](/en/PROJECT_STRUCTURE/) · [COST_AND_LIMITS](/en/COST_AND_LIMITS/) · [OBSERVABILITY](/en/OBSERVABILITY/)
+>
+> 🏷️ **Type**: Architecture reference · **Time**: ~20 min · **Prereq**: finish tutorials 01~06
 
 > For readers who want a global view of the project. After reading, you should be able to draw a clear picture of the module relationships.
 
@@ -107,9 +111,14 @@ CI uses `OPENAI_API_KEY=dummy` placeholder and they all pass.
 | New CI task | `.github/workflows/*.yml` |
 | New test | `tests/test_xxx.py` |
 
-## 6. Future Roadmap
+## 6. Milestones (shipped in v0.3.0)
 
-- [ ] Ollama / Qwen branch examples (✓ done in v0.3.0)
-- [ ] LangGraph to replace `RunnableWithMessageHistory`
-- [ ] `mkdocs` docs site (✓ done in v0.3.0)
-- [ ] Dockerfile image (✓ done in v0.3.0)
+- Ollama / Qwen branch examples (`examples/07_ollama_local.py`, `examples/08_qwen.py`)
+- `mkdocs` docs site (Material theme + GitHub Pages auto-deploy)
+- Multi-stage Dockerfile image
+
+## 7. v0.5.0 Candidate Roadmap
+
+- LangGraph to replace `RunnableWithMessageHistory` (see P29)
+- RAG evaluation & observability enhancements (see P37 / P38)
+- `uv` over `pip`, multi-vector-store backends (see P50 / P51)

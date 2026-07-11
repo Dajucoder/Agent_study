@@ -1,6 +1,10 @@
 # 01 · 模型与提示词（Model I/O）
 
-> 🌐 **English version**: [01-models-and-prompts.en.md](01-models-and-prompts.en.md)
+> 🌐 **English version**: [01-models-and-prompts.en.md](/en/01-models-and-prompts/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [📚 学习路线](LEARNING_GUIDE.md) · 下一章：[02 链（LCEL）](02-chains.md) · 相关：[ENV_SETUP 环境搭建](ENV_SETUP.md) · [03 记忆](03-memory.md)
+>
+> 🏷️ **难度**：入门 · **时长**：约 20 分钟 · **前置**：[环境搭建](ENV_SETUP.md)
 
 LangChain 中最底层、也是最重要的抽象就是 **Model I/O**：如何把"提示词"喂给"模型"，再把"模型输出"解析成你想要的格式。
 

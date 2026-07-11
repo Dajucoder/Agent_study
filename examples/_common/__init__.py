@@ -40,18 +40,21 @@ from _common.env import (  # noqa: E402, F401
     check_api_key,
     data_path,
     get_env,
+    get_settings,
     project_root,
     require_env,
 )
 from _common.io import format_docs  # noqa: E402, F401
 from _common.llm import get_embeddings, get_llm  # noqa: E402, F401
 from _common.calc import _safe_eval  # noqa: E402, F401
+from _common.settings import settings  # noqa: E402, F401
 
 __all__ = [
     # env
     "get_env",
     "require_env",
     "check_api_key",
+    "get_settings",
     "project_root",
     "data_path",
     # llm
@@ -61,4 +64,6 @@ __all__ = [
     "format_docs",
     # calc
     "_safe_eval",
+    # settings
+    "settings",
 ]

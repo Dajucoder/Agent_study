@@ -14,9 +14,13 @@ langchain-text-splitters==1.1.2
 
 # ---- 输出解析与工具 ----
 pydantic==2.12.5
+pydantic-settings==2.13.1
 
 # ---- 向量库 ----
 chromadb==1.5.2
+
+# ---- 图编排（03_memory_graph.py）----
+langgraph==1.2.7
 
 # ---- 嵌入与 OpenAI 客户端 ----
 openai==2.26.0

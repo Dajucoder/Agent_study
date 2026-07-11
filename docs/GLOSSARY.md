@@ -1,6 +1,10 @@
 # 术语表（Glossary）
 
-> 🌐 **English version**: [GLOSSARY.en.md](GLOSSARY.en.md)
+> 🌐 **English version**: [GLOSSARY.en.md](/en/GLOSSARY/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [参考资料](REFERENCES.md) · 相关：[01 模型与提示词](01-models-and-prompts.md) · [04 检索与 RAG](04-retrieval-and-rag.md)
+>
+> 🏷️ **类型**：术语速查 · **时长**：随时查阅 · **前置**：无
 
 > 学习中可能遇到的名词解释。**不要求一次全懂**——遇到不熟的词回来查就行。
 

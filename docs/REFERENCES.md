@@ -1,6 +1,10 @@
 # 参考资料（References）
 
-> 🌐 **English version**: [REFERENCES.en.md](REFERENCES.en.md)
+> 🌐 **English version**: [REFERENCES.en.md](/en/REFERENCES/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [术语表](GLOSSARY.md) · [学习路线](LEARNING_GUIDE.md)
+>
+> 🏷️ **类型**：资料索引 · **时长**：随时查阅 · **前置**：无
 
 > 学习中常用到的外部文档、教程、工具，按主题分组。
 

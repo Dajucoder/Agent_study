@@ -1,6 +1,10 @@
 # Observability
 
 > 🌐 **中文版**: [OBSERVABILITY.md](OBSERVABILITY.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [ARCHITECTURE](/en/ARCHITECTURE/) · [COST_AND_LIMITS](/en/COST_AND_LIMITS/) · Related：[06 Serving & Deployment](/en/06-langserve-and-deployment/)
+>
+> 🏷️ **Level**: Advanced · **Time**: ~15 min · **Prereq**: [06 Serving & Deployment](/en/06-langserve-and-deployment/)
 
 > This chapter explains "how to see what happens in an LLM call" — a key step in upgrading a demo to a maintainable system.
 
@@ -111,6 +115,14 @@ print(prompt_value.to_string())
 import langchain
 langchain.debug = True
 ```
+
+## 7. Runnable example
+
+The concepts above are turned into runnable code in [examples/11_observability.py](../examples/11_observability.py):
+
+- Part 1: `get_openai_callback` to count tokens and cost of a single call;
+- Part 2: LangSmith tracing guidance (toggle `LANGCHAIN_TRACING_V2` in `.env`);
+- Part 3: configure an OpenTelemetry `OTLPSpanExporter` (optional, needs `opentelemetry` packages).
 
 ## 6. References
 

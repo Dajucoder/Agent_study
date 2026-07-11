@@ -1,6 +1,10 @@
 # 02 · 链（Chains）
 
-> 🌐 **English version**: [02-chains.en.md](02-chains.en.md)
+> 🌐 **English version**: [02-chains.en.md](/en/02-chains/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [📚 学习路线](LEARNING_GUIDE.md) · 上一章：[01 模型与提示词](01-models-and-prompts.md) · 下一章：[03 记忆](03-memory.md) · 相关：[01 模型与提示词](01-models-and-prompts.md) · [04 检索与 RAG](04-retrieval-and-rag.md)
+>
+> 🏷️ **难度**：初级 · **时长**：约 25 分钟 · **前置**：[01 模型与提示词](01-models-and-prompts.md)
 
 当"提示词 → 模型 → 解析"需要串联，或需要多步组合时，就用 **链（Chain）**。现代 LangChain 推荐用 **LCEL（LangChain Expression Language）** 以管道符 `|` 组合组件。
 

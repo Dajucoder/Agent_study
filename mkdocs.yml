@@ -28,10 +28,9 @@ site_dir: site
 
 # docs/ 下不渲染为页面的辅助文件
 # PROJECT_STRUCTURE 是项目结构说明，单独通过 GitHub 仓库查看
-# *.en.md 文件作为同主题英文镜像，顶部有链接但不单独建页面（避免 nav 翻倍）
+# 注意：*.en.md 不再排除——改由 i18n 插件处理为 /en/ 子站点
 exclude_docs: |
   PROJECT_STRUCTURE.md
-  *.en.md
 
 theme:
   name: material
@@ -43,7 +42,6 @@ theme:
     - navigation.expand
     - navigation.top
     - navigation.tracking
-    - navigation.indexes
     - toc.follow
     - search.suggest
     - search.highlight
@@ -103,12 +101,16 @@ markdown_extensions:
   - pymdownx.arithmatex
 
 # 站点导航
+# 说明：
+#   - 教程 01→06 连续排列，Material 会据此自动生成每页底部的"上一页 / 下一页"。
+#   - PROJECT_STRUCTURE.md 已被 exclude_docs 排除出构建，故此处指向 GitHub 源码，避免 404。
+#   - 所有 .en.md 由 exclude_docs 排除，语言切换通过各文档顶部导航条完成。
 nav:
   - 首页: index.md
   - 快速上手:
       - 环境搭建: ENV_SETUP.md
       - 学习路线: LEARNING_GUIDE.md
-      - 目录结构: PROJECT_STRUCTURE.md
+      - 目录结构: https://github.com/Dajucoder/Agent_study/blob/main/docs/PROJECT_STRUCTURE.md
   - 教程:
       - 01 模型与提示词: 01-models-and-prompts.md
       - 02 链（LCEL）: 02-chains.md
@@ -127,6 +129,18 @@ nav:
 
 # 插件
 plugins:
+  # mkdocs-static-i18n：把 docs/*.md（默认 zh）与 docs/*.en.md（en）配对，
+  # 自动生成 /en/ 子站点 + 语言切换器。suffix 模式即"文件名.en.md"约定，
+  # 与本项目既有英文文档命名完全一致，无需移动文件。
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: zh
+          default: true
+          name: 中文
+        - locale: en
+          name: English
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
       lang:

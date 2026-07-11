@@ -1,6 +1,10 @@
 # FAQ & Troubleshooting
 
 > 🌐 **中文版**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [ENV_SETUP](/en/ENV_SETUP/) · Related：[01 Models & Prompts](/en/01-models-and-prompts/) · [04 Retrieval & RAG](/en/04-retrieval-and-rag/)
+>
+> 🏷️ **Type**: Troubleshooting · **Time**: on-demand · **Prereq**: [ENV_SETUP](/en/ENV_SETUP/)
 
 > Consolidating "the pitfalls you've stepped on" in one place. **Check this section before opening an issue.**
 

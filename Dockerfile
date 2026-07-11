@@ -26,6 +26,10 @@ FROM python:3.11-slim AS runtime
 # 安全：以非 root 用户运行
 RUN groupadd --system app && useradd --system --gid app --create-home --home-dir /home/app app
 
+# HEALTHCHECK 需要 curl（默认阶段为 slim，不含）
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
 # 仅复制 venv（不复制 builder 整层，体积小）
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH" \
@@ -42,6 +46,11 @@ COPY --chown=app:app . /app
 USER app
 
 EXPOSE 8000
+
+# 健康检查：探测 06_langserve 的 /health 端点（需通过 -e OPENAI_API_KEY=... 提供密钥，
+# 否则服务无法启动、健康检查也会失败——这是既有设计，详见 README 的 Docker 部署小节）
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD curl --fail http://localhost:8000/health || exit 1
 
 # 默认启动 LangServe；可通过环境变量切换
 #   docker run -e CMD=jupyter -p 8888:8888 ...

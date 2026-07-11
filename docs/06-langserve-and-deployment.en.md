@@ -1,6 +1,10 @@
 # 06 · Serving & Deployment (LangServe)
 
 > 🌐 **中文版**: [06-langserve-and-deployment.md](06-langserve-and-deployment.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [📚 Learning Path](/en/LEARNING_GUIDE/) · Prev：[05 Agents](/en/05-agents/) · Next：[ARCHITECTURE](/en/ARCHITECTURE/) · Related：[OBSERVABILITY](/en/OBSERVABILITY/) · [PROJECT_STRUCTURE](/en/PROJECT_STRUCTURE/)
+>
+> 🏷️ **Level**: Intermediate · **Time**: ~25 min · **Prereq**: [05 Agents](/en/05-agents/)
 
 After learning to write chains, the next step is turning them into **services that other programs can call**. This chapter uses **LangServe** (built on FastAPI) to expose chains as HTTP APIs.
 

@@ -1,6 +1,10 @@
 # Contributing
 
 > 🌐 **中文版**: [CONTRIBUTING.md](CONTRIBUTING.md)
+>
+> 🧭 **Navigate** · [🏠 Project Home](README.en.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.en.md)
+>
+> 🏷️ **Type**: Contributing guide · **For**: prospective contributors
 
 Thanks for considering contributing to this project! 🎉
 
@@ -55,12 +59,17 @@ pre-commit install          # optional, enables pre-commit hook
 ```
 
 ### 4. Modify Code
-- Make incremental changes. Before committing, run:
+- Make incremental changes. **Required before commit / opening a PR** (mirrors what CI runs, so you reproduce the same failures locally):
   ```bash
-  ruff check .
-  pytest tests/ -q
-  mypy examples/ tests/
+  make lint      # ruff check .
+  make test      # pytest tests/ -q
   ```
+- **Recommended** to also run (keep style consistent + see whether coverage gate passes):
+  ```bash
+  make format    # ruff format .
+  make coverage  # coverage run -m pytest && coverage html (fail_under=85)
+  ```
+- PR title follows [Conventional Commits](https://www.conventionalcommits.org/) (release-drafter is configured; the title decides the changelog category; common types: `feat/fix/docs/test/chore`).
 
 ### 5. Commit & Push
 ```bash

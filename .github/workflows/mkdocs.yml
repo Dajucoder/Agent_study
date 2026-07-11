@@ -35,7 +35,8 @@ jobs:
         run: |
           pip install mkdocs==1.6.1 \
                     mkdocs-material==9.5.43 \
-                    pymdown-extensions==10.12
+                    pymdown-extensions==10.12 \
+                    mkdocs-static-i18n
 
       - name: Build
         run: mkdocs build --strict

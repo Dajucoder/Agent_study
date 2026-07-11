@@ -1,6 +1,10 @@
 # 成本与限制（Cost & Limits）
 
-> 🌐 **English version**: [COST_AND_LIMITS.en.md](COST_AND_LIMITS.en.md)
+> 🌐 **English version**: [COST_AND_LIMITS.en.md](/en/COST_AND_LIMITS/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [ARCHITECTURE 架构总览](ARCHITECTURE.md) · [可观测性](OBSERVABILITY.md) · 相关：[04 检索与 RAG](04-retrieval-and-rag.md)
+>
+> 🏷️ **难度**：进阶 · **时长**：约 15 分钟 · **前置**：[04 检索与 RAG](04-retrieval-and-rag.md)
 
 > 本章集中说明 LLM 调用可能产生的**费用、超时、速率限制**以及**省钱策略**。
 > 不论是 OpenAI 官方还是第三方 OpenAI 兼容服务，养成"看 token、知速率、设上限"的习惯都至关重要。

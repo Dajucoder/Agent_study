@@ -1,6 +1,10 @@
 # 贡献指南（Contributing）
 
 > 🌐 **English version**: [CONTRIBUTING.en.md](CONTRIBUTING.en.md)
+>
+> 🧭 **导航** · [🏠 项目首页](README.md) · [行为准则](CODE_OF_CONDUCT.md) · [安全策略](SECURITY.md)
+>
+> 🏷️ **类型**：贡献指南 · **适合**：潜在贡献者
 
 感谢你考虑为本项目做出贡献！🎉
 
@@ -54,11 +58,17 @@ pip install ruff pytest
 ```
 
 ### 4. 修改代码
-- 增量修改，提交前跑：
+- 增量修改。**提交 / 提 PR 前必跑**（等价于 CI 会做的检查，能本地复现同款失败）：
   ```bash
-  ruff check .
-  pytest tests/ -q
+  make lint      # ruff check .
+  make test      # pytest tests/ -q
   ```
+- **推荐**顺手跑（保持风格统一 + 看覆盖率门槛是否达标）：
+  ```bash
+  make format    # ruff format .
+  make coverage  # coverage run -m pytest && coverage html（fail_under=85）
+  ```
+- PR 标题遵循 [Conventional Commits](https://www.conventionalcommits.org/zh-hans/)（已配 release-drafter，标题决定变更分类；常用 `feat/fix/docs/test/chore`）。
 
 ### 5. 提交 & 推送
 ```bash

@@ -1,9 +1,9 @@
 """01 · 模型与提示词（Model I/O）
 
-演示：基础对话、ChatPromptTemplate 动态构造、PydanticOutputParser 结构化解析。
+演示：基础对话、ChatPromptTemplate 动态构造、结构化输出（langchain 1.x 推荐 with_structured_output）。
 运行：python examples/01_models_prompts.py
 """
-from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
+from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
@@ -33,22 +33,20 @@ def main() -> None:
     tpl = PromptTemplate.from_template("把下面句子翻译成英文：{sentence}")
     print((tpl | llm | StrOutputParser()).invoke({"sentence": "今天天气真好"}))
 
-    # ---- 4) PydanticOutputParser：让模型返回结构化对象 ----
+    # ---- 4) 结构化输出：langchain 1.x 推荐 with_structured_output ----
     print("\n【4) 结构化输出】")
 
     class Translation(BaseModel):
         language: str = Field(description="目标语言名称")
         text: str = Field(description="翻译后的文本")
 
-    parser = PydanticOutputParser(pydantic_object=Translation)
-    struct_prompt = ChatPromptTemplate.from_messages([
-        ("system", "你是一个翻译器。\n{format_instructions}"),
-        ("human", "把下面内容翻译成{target_language}：\n{text}"),
-    ]).partial(format_instructions=parser.get_format_instructions())
-
-    struct_chain = struct_prompt | llm | parser
-    result = struct_chain.invoke({"target_language": "英语", "text": "你好，世界"})
+    # 1.x 现代写法：一行让模型按 Pydantic schema 返回结构化对象（自动校验）
+    structured_llm = llm.with_structured_output(Translation)
+    result = structured_llm.invoke("把下面内容翻译成英语：\n你好，世界")
     print(f"language={result.language}, text={result.text}")
+
+    # （对比）1.x 之前常用 PydanticOutputParser + get_format_instructions() + .partial(...)
+    # 的写法，现已由 with_structured_output 一行取代；老写法仍可运行，但 1.x 不再推荐。
 
 
 if __name__ == "__main__":

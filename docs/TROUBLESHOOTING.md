@@ -1,6 +1,10 @@
 # 常见问题与排查（Troubleshooting / FAQ）
 
-> 🌐 **English version**: [TROUBLESHOOTING.en.md](TROUBLESHOOTING.en.md)
+> 🌐 **English version**: [TROUBLESHOOTING.en.md](/en/TROUBLESHOOTING/)
+>
+> 🧭 **导航** · [🏠 首页](index.md) · [环境搭建](ENV_SETUP.md) · 相关：[01 模型与提示词](01-models-and-prompts.md) · [04 检索与 RAG](04-retrieval-and-rag.md)
+>
+> 🏷️ **类型**：排错手册 · **时长**：随时查阅 · **前置**：[环境搭建](ENV_SETUP.md)
 
 > 把"踩过的坑"集中到一处。**先看本节，再去提 Issue。**
 

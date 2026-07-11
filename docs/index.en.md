@@ -1,6 +1,10 @@
 # LangChain Learning Project
 
 > 🌐 **中文版**: [index.md](index.md)
+>
+> 🧭 **Navigate** · [📚 Learning Path](/en/LEARNING_GUIDE/) · [ENV_SETUP](/en/ENV_SETUP/) · [PROJECT_STRUCTURE](/en/PROJECT_STRUCTURE/)
+>
+> 🏷️ **Type**: Docs navigation hub · **For**: all readers
 
 > A hands-on project for **systematically learning the LangChain framework**. From 0 to 1, master the six core topics: Model I/O, Chain, Memory, Retrieval, Agent, and LangServe.
 
@@ -22,6 +26,28 @@
 - 🌏 **Local / China-friendly**: Ollama, Qwen examples
 - 🤝 **Open to contribution**: Issue / PR templates, contribution guide
 - 🌍 **Bilingual docs**: 简体中文 + English (this site)
+
+## 🧭 How to navigate this site
+
+This site is built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and offers three layers of navigation:
+
+- **Left sidebar**: grouped as "Getting Started → Tutorials → Advanced → Reference" for jumping to any section.
+- **Right table of contents (On this page)**: auto-generated per page from headings; click to jump to a subsection (the `#` next to a title also anchors).
+- **Bottom Previous / Next**: tutorials 01→06 are chained in order—just read through.
+
+In addition, every document has a **top navigation bar** (🏠 Home / 📚 Learning Path / Prev / Next / Related) for quick jumps between GitHub and the docs site.
+
+**Quick links**:
+
+| I want to… | Go to |
+| --- | --- |
+| Get my first LLM call running in 5 min | [ENV_SETUP](/en/ENV_SETUP/) |
+| Know the recommended learning order | [Learning Path](/en/LEARNING_GUIDE/) |
+| Understand how the project is organized | [Project Structure](/en/PROJECT_STRUCTURE/) |
+| Start with "Models / Prompts" | [01 Models & Prompts](/en/01-models-and-prompts/) |
+| Learn how to serve a chain as an API | [06 Serving & Deployment](/en/06-langserve-and-deployment/) |
+| Troubleshoot an error | [Troubleshooting](/en/TROUBLESHOOTING/) |
+| Look up a term | [Glossary](/en/GLOSSARY/) |
 
 ## Chapter Index
 

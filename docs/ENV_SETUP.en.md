@@ -1,6 +1,10 @@
 # Environment Setup
 
 > 🌐 **中文版**: [ENV_SETUP.md](ENV_SETUP.md)
+>
+> 🧭 **Navigate** · [🏠 Home](/en/index/) · [📚 Learning Path](/en/LEARNING_GUIDE/) · Related：[PROJECT_STRUCTURE](/en/PROJECT_STRUCTURE/) · [Learning Path](/en/LEARNING_GUIDE/)
+>
+> 🏷️ **Level**: Beginner · **Time**: ~15 min · **Prereq**: Python 3.10+ and a working LLM API key
 
 This chapter walks you through getting the project running locally and successfully calling a model. Please follow the steps strictly.
 
@@ -74,7 +78,8 @@ OPENAI_MODEL=their-model-name
 OPENAI_EMBEDDING_MODEL=their-embedding-name
 ```
 
-> ⚠️ Not all features work with third-party services: some don't support `function calling` (affects `05_agents.py`), and embedding models must match the provider.
+!!! warning "第三方服务兼容性"
+    Not all features work with third-party services: some don't support `function calling` (affects `05_agents.py`), and embedding models must match the provider.
 
 ## 5. Verify Environment
 

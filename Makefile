@@ -1,4 +1,4 @@
-.PHONY: help setup check run-00 run-01 run-02 run-03 run-04 run-05 run-06 test lint clean
+.PHONY: help setup check run-00 run-01 run-02 run-03 run-04 run-05 run-06 test lint format coverage security lock-check clean
 
 # Python 解释器：可在命令行覆盖，如 `make PY=.venv/bin/python test`
 PY ?= python
@@ -11,6 +11,10 @@ help:
 	@echo "  make run-NN    跑对应章节示例（NN = 00..06）"
 	@echo "  make test      跑 pytest 单元测试"
 	@echo "  make lint      跑 ruff 检查"
+	@echo "  make format    跑 ruff format 自动格式化"
+	@echo "  make coverage  跑测试并生成 HTML 覆盖率报告"
+	@echo "  make security  跑 bandit 安全扫描"
+	@echo "  make lock-check 校验 requirements.lock 可被解析（--dry-run）"
 	@echo "  make clean     清理临时文件（__pycache__、.pytest_cache、data/chroma）"
 
 # ---- 环境 ----
@@ -42,6 +46,20 @@ test:
 lint:
 	ruff check examples/ tests/
 
+format:
+	ruff format examples/ tests/
+
+coverage:
+	coverage run -m pytest tests/ -q
+	coverage html
+
+security:
+	bandit -ll -q -r examples/ tests/
+
+# 仅校验 lock 文件可被 pip 解析，不实际安装（--dry-run）
+lock-check:
+	pip install --dry-run -r requirements.lock
+
 clean:
-	rm -rf examples/__pycache__ tests/__pycache__ .pytest_cache .ruff_cache
+	rm -rf examples/__pycache__ tests/__pycache__ .pytest_cache .ruff_cache .coverage htmlcov
 	rm -rf data/chroma
