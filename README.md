@@ -33,6 +33,7 @@
 - [入门笔记本说明](#入门笔记本说明)
 - [进阶文档](#进阶文档)
 - [贡献与社区](#贡献与社区)
+- [在线学习平台（前端）](#在线学习平台前端)
 - [版本与发布](#版本与发布)
 - [许可证](#许可证)
 - [引用](#引用)
@@ -88,6 +89,28 @@
 | 工程化 | ruff · pytest · pre-commit · GitHub Actions · Docker · mkdocs |
 | 交互环境 | Jupyter Notebook / JupyterLab |
 
+## 在线学习平台（前端）
+
+> 📖 完整文档：[docs/WEB_FRONTEND.md](docs/WEB_FRONTEND.md)
+
+本仓库内置一个**现代化在线学习平台前端**（`web/` 目录，React 18 + TypeScript + Vite），与上面的 LangChain 学习路线深度结合，提供：
+
+- **课程展示与多维分类**：6 大主题 + 难度 + 视频/图文形式的组合筛选、搜索与排序；
+- **内容播放器**：HTML5 视频（自动续播）+ 图文富文本（代码一键复制、提示框等）；
+- **学习进度追踪与历史**：按课程记录完成度与观看进度，按用户隔离并持久化；
+- **用户登录注册及个人中心**：路由守卫、账户设置、学习概览。
+
+设计上采用组件化开发、Context 规范状态管理、移动优先的响应式布局与浅/深色双主题，零第三方 UI 库依赖。
+
+本地运行（需 Node.js 18+）：
+
+```bash
+cd web
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # 类型检查 + 生产构建，产物在 web/dist/
+```
+
 ## 目录结构（实际）
 
 ```
@@ -142,6 +165,10 @@ Agent_study/
 ├── data/docs/sample.txt       # RAG 示例文档
 ├── tests/                     # 离线 smoke 测试
 │   ├── conftest.py · test_prompts.py · test_format_docs.py · test_calculator.py
+├── web/                       # React 在线学习平台前端（详见 docs/WEB_FRONTEND.md）
+│   ├── public/ · src/（components / pages / store / data / utils / styles / types）
+│   ├── index.html · vite.config.ts · tsconfig.json · package.json
+│   └── README.md
 └── notebooks/                 # 交互式笔记本（0~6）
     ├── 00_getting_started.ipynb
     ├── 01_models_and_prompts.ipynb

@@ -122,3 +122,64 @@ CI uses `OPENAI_API_KEY=dummy` placeholder and they all pass.
 - LangGraph to replace `RunnableWithMessageHistory` (see P29)
 - RAG evaluation & observability enhancements (see P37 / P38)
 - `uv` over `pip`, multi-vector-store backends (see P50 / P51)
+
+## 8. Frontend Learning Platform (`web/`)
+
+> Full docs: [WEB_FRONTEND.en.md](WEB_FRONTEND.en.md)
+
+`web/` is a standalone React single-page app (SPA), decoupled from but thematically aligned with the repository's LangChain course content. Its job is to present the course data (`src/data/`) through modern interactions and persist learning behavior as local state.
+
+### 8.1 Module Relationships
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                     Browser (React SPA)                      │
+└───────┬───────────────────────────┬──────────┬──────────────┘
+        │ routing (react-router)     │          │
+        ▼                           ▼          ▼
+┌──────────────┐           ┌──────────────┐  ┌──────────────────┐
+│   Pages      │           │  Layout      │  │  Route Guard     │
+│ home/courses/│◄─consume─►│ Header/Footer│  │  RequireAuth     │
+│ learn/account│           └──────────────┘  └──────────────────┘
+└──────┬───────┘
+       │ compose
+       ▼
+┌────────────────────────────────────────────────────────────┐
+│   State layer (src/store, Context + Hooks)                  │
+│   ThemeContext  ── light/dark theme                         │
+│   AuthContext   ── current user / login & register          │
+│   ProgressContext ── learning progress (bucketed by userId) │
+└──────┬───────────────────────────────────┬─────────────────┘
+       │                                    │ persist
+       ▼                                    ▼
+┌──────────────┐                  ┌──────────────────┐
+│ UI / Player  │                  │  localStorage     │
+│ course/player │                  │  (theme/auth/prog)│
+└──────────────┘                  └──────────────────┘
+```
+
+### 8.2 Data Flow: "watching one video lesson"
+
+```
+User clicks a lesson
+   │
+   ▼
+[LearnPage] reads URL ?l= and current lesson from ProgressContext
+   │  setCurrentLesson(courseId, lessonId)
+   ▼
+[VideoPlayer] <video> loads; seeks to last watched second on loadedmetadata
+   │  onTimeUpdate (~every 3s)
+   ▼
+[updateWatchSeconds] writes into ProgressContext (increase-only)
+   │  persist → localStorage (bucketed by userId)
+   ▼
+[markComplete] on video end marks complete → course % recomputed → home/progress refresh
+```
+
+### 8.3 Key Design Decisions
+
+- **Component-based + standardized state**: global state is consolidated into 3 Contexts; components only consume via `useXxx()`, eliminating prop drilling.
+- **Per-user progress isolation**: `ProgressContext` buckets storage by `userId`, switching automatically on login/logout.
+- **URL as state**: course filters (keyword/category) and current lesson live in the URL (`searchParams`), shareable and back-button friendly.
+- **Zero runtime UI deps**: styles use plain CSS + variables, icons are self-built SVG; the bundle is only ~74KB (gzip).
+- **Extensible**: add a course by appending to `src/data/courses.ts`; add a page by registering a route in `App.tsx`.

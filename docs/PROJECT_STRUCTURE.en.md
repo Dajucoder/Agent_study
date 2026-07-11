@@ -99,6 +99,31 @@ Each script should be runnable with `python examples/0x_xxx.py` after activating
 - `test_calculator.py`: Safe calculator (covers `+ - * /` and parentheses)
 - All run offline without an LLM.
 
+## `web/` (Frontend Learning Platform)
+
+A modern online learning platform frontend built with **React 18 + TypeScript + Vite**, deeply integrated with this project's learning path. Full docs: [WEB_FRONTEND.en.md](WEB_FRONTEND.en.md).
+
+```
+web/
+├── public/favicon.svg        # site icon
+├── src/
+│   ├── components/           # ui (primitives) / layout / course / player
+│   ├── pages/                # home / courses / detail / learn / login / register / profile / progress / 404
+│   ├── store/                # state: AuthContext / ProgressContext / ThemeContext
+│   ├── data/                 # course & category mock data
+│   ├── utils/                # localStorage wrapper, formatters, multi-dimension filter
+│   ├── styles/               # modular CSS (base / header / home / courses / learn / account / responsive)
+│   ├── types/                # global TS types
+│   ├── App.tsx               # route table
+│   ├── main.tsx              # entry (Provider + Router)
+│   └── index.css             # style entry (@import aggregation)
+├── index.html · vite.config.ts · tsconfig.json · package.json · README.md
+```
+
+- `npm run dev` starts the dev server (default `http://localhost:5173`).
+- `npm run build` type-checks and emits static files into `web/dist/`.
+- State lives in `src/store/`: session, learning progress (per-user), and theme, all persisted to `localStorage`.
+
 ## Naming Convention
 
 - Chapter numbers `01~06` correspond one-to-one with `docs/`, for easy cross-reference.

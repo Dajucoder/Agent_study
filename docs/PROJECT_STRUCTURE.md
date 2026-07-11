@@ -86,6 +86,32 @@ examples/
 
 学习后期可为自己的 `examples/` 写少量 `pytest` 用例，验证链的输入输出符合预期。
 
+## `web/`（前端在线学习平台）
+
+基于 **React 18 + TypeScript + Vite** 的现代化在线学习平台前端，与本项目学习路线深度结合。
+详细文档见 [WEB_FRONTEND.md](WEB_FRONTEND.md)。
+
+```
+web/
+├── public/favicon.svg        # 站点图标
+├── src/
+│   ├── components/           # ui（基础原语）/ layout（布局）/ course（课程）/ player（播放器）
+│   ├── pages/                # 页面：首页/课程/详情/学习/登录/注册/个人中心/进度/404
+│   ├── store/                # 状态管理：AuthContext / ProgressContext / ThemeContext
+│   ├── data/                 # 课程与分类 mock 数据
+│   ├── utils/                # localStorage 封装、格式化、多维筛选纯函数
+│   ├── styles/               # 模块化 CSS（base / header / home / courses / learn / account / responsive）
+│   ├── types/                # 全局 TS 类型
+│   ├── App.tsx               # 路由表
+│   ├── main.tsx              # 入口（Provider + Router）
+│   └── index.css             # 样式入口（@import 聚合）
+├── index.html · vite.config.ts · tsconfig.json · package.json · README.md
+```
+
+- `npm run dev` 启动开发服务器（默认 `http://localhost:5173`）。
+- `npm run build` 执行类型检查并产出静态文件到 `web/dist/`。
+- 状态集中在 `src/store/`：登录态、学习进度（按用户隔离）、主题，均持久化到 `localStorage`。
+
 ## 命名约定
 
 - 章节编号 `01~06` 与 `docs/` 文档一一对应，方便回查。

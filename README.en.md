@@ -34,6 +34,7 @@
 - [Notebook Notes](#notebook-notes)
 - [Advanced Docs](#advanced-docs)
 - [Contributing & Community](#contributing--community)
+- [Online Learning Platform (Frontend)](#online-learning-platform-frontend)
 - [Versioning & Releases](#versioning--releases)
 - [License](#license)
 - [Citation](#citation)
@@ -49,6 +50,28 @@
 - Python developers who want to get into LLM application development.
 - People who have used ChatGPT/API and want to upgrade "calling an endpoint" to "building a system".
 - Engineers who need to combine existing business with RAG and agents.
+
+## Online Learning Platform (Frontend)
+
+> 📖 Full docs: [docs/WEB_FRONTEND.en.md](docs/WEB_FRONTEND.en.md)
+
+This repository also ships a **modern online learning platform frontend** (the `web/` folder, React 18 + TypeScript + Vite), tightly integrated with the LangChain learning path above, providing:
+
+- **Course browsing & multi-dimensional classification**: 6 topics + level + video/article format filtering, search and sorting.
+- **Content player**: HTML5 video (auto-resume) + article rich text (code with one-click copy, callouts, etc.).
+- **Progress tracking & history**: per-course completion and watch progress, isolated per user and persisted.
+- **Login / register & personal center**: route guards, account settings, learning overview.
+
+It uses component-based development, Context-based state management, a mobile-first responsive layout and light/dark themes, with **zero third-party UI library** dependencies.
+
+Local dev (requires Node.js 18+):
+
+```bash
+cd web
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # type-check + production build -> web/dist/
+```
 
 ## Tech Stack
 
@@ -115,6 +138,10 @@ Agent_study/
 ├── data/docs/sample.txt        # RAG sample document
 ├── tests/                      # Offline smoke tests
 │   ├── conftest.py · test_prompts.py · test_format_docs.py · test_calculator.py
+├── web/                        # React online learning platform frontend (see docs/WEB_FRONTEND.en.md)
+│   ├── public/ · src/ (components / pages / store / data / utils / styles / types)
+│   ├── index.html · vite.config.ts · tsconfig.json · package.json
+│   └── README.md
 └── notebooks/                  # Interactive notebooks (0~6)
 ```
 

@@ -122,3 +122,65 @@ CI 用 `OPENAI_API_KEY=dummy` 占位即能跑通。
 - LangGraph 替代 `RunnableWithMessageHistory`（见改进计划 P29）
 - RAG 评估与可观测性增强（见 P37 / P38）
 - `uv` 替换 `pip`、多向量库后端（见 P50 / P51）
+
+## 8. 前端在线学习平台（`web/`）
+
+> 完整文档：[WEB_FRONTEND.md](WEB_FRONTEND.md)
+
+`web/` 是一个独立的 React 单页应用（SPA），与仓库的 LangChain 课程内容解耦但主题对齐。
+它的职责是把课程数据（`src/data/`）以现代化交互呈现给用户，并把学习行为沉淀为本地状态。
+
+### 8.1 模块关系
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                       浏览器 (React SPA)                     │
+└───────┬───────────────────────────┬──────────┬──────────────┘
+        │ 路由 (react-router)        │          │
+        ▼                           ▼          ▼
+┌──────────────┐           ┌──────────────┐  ┌──────────────────┐
+│  页面 Pages  │           │ 布局 Layout  │  │  路由守卫 Guard  │
+│ 首页/课程/   │◄──消费────►│ Header/Footer│  │  RequireAuth     │
+│ 学习/账户/   │           └──────────────┘  └──────────────────┘
+└──────┬───────┘
+       │ 组合
+       ▼
+┌────────────────────────────────────────────────────────────┐
+│  状态层 (src/store，Context + Hooks)                         │
+│   ThemeContext ── 浅/深色主题                                │
+│   AuthContext  ── 当前用户 / 登录注册                        │
+│   ProgressContext ── 学习进度（按 userId 分桶，持久化）      │
+└──────┬───────────────────────────────────┬─────────────────┘
+       │                                    │ 持久化
+       ▼                                    ▼
+┌──────────────┐                  ┌──────────────────┐
+│ UI 组件 / 播放器│                  │  localStorage     │
+│ course/player │                  │  (主题/账户/进度) │
+└──────────────┘                  └──────────────────┘
+```
+
+### 8.2 数据流：以“学习一节视频课”为例
+
+```
+用户点击课时
+   │
+   ▼
+[LearnPage] 读取 URL ?l= 与 ProgressContext 当前课时
+   │  setCurrentLesson(courseId, lessonId)
+   ▼
+[VideoPlayer] <video> 加载；loadedmetadata 时跳到上次观看秒数
+   │  onTimeUpdate（每 ~3s）
+   ▼
+[updateWatchSeconds] 仅增不减地写入 ProgressContext
+   │  persist → localStorage（按 userId 分桶）
+   ▼
+[markComplete] 视频结束后标记完成 → 课程完成度重算 → 首页/进度页刷新
+```
+
+### 8.3 关键设计决策
+
+- **组件化 + 规范状态管理**：全局状态收口到 3 个 Context，组件只通过 `useXxx()` 消费，杜绝 prop drilling。
+- **进度按用户隔离**：`ProgressContext` 以 `userId` 为存储键分桶，登录/登出自动切换各自进度。
+- **URL 即状态**：课程筛选（关键词/分类）与当前课时写入 URL（`searchParams`），可分享、可后退。
+- **零运行时 UI 依赖**：样式用原生 CSS + 变量，图标自建 SVG，构建产物仅约 74KB（gzip）。
+- **可扩展**：新增课程只需在 `src/data/courses.ts` 追加数据；新增页面只需在 `App.tsx` 注册路由。

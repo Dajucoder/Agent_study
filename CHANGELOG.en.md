@@ -19,6 +19,18 @@ and version numbers follow [Semantic Versioning](https://semver.org/).
 - Multi vector-store backend examples FAISS / Qdrant / Milvus (P51)
 - Streaming Web UI demo (SSE live echo, P52)
 
+## [1.0.0] - 2026-07-11 · Online Learning Platform Frontend
+
+### Added
+- New `web/` folder: a modern online learning platform frontend built with **React 18 + TypeScript + Vite** (app version v1.0.0)
+- **Course browsing & multi-dimensional classification**: 6 topics + level + video/article format filtering, keyword search and multi-dimension sorting, filter state synced to URL
+- **Content player**: HTML5 video (auto-resume) + article rich text (code with one-click copy, callouts), lesson sidebar showing completion state
+- **Progress tracking & history**: per-course completion and watched seconds, isolated per logged-in user and persisted in `localStorage`, with reset support
+- **Login / register & personal center**: route guards protect learning/profile pages, account settings (name / bio / avatar color), redirect back to source after login
+- **Standardized state management**: `AuthContext` / `ProgressContext` (bucketed per user) / `ThemeContext`, all mounted via `AppProviders`
+- **Responsive & theme**: mobile-first layout (PC/tablet/phone breakpoints), light/dark dual themes (CSS variables)
+- Docs `docs/WEB_FRONTEND.en.md` added and wired into `mkdocs.yml` navigation
+
 ## [0.5.0] - 2026-07-11
 
 ### Added

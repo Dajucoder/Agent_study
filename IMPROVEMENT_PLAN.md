@@ -11,6 +11,20 @@
 
 ---
 
+## P★ · 前端在线学习平台（`web/`）— 2026-07-11 已完成
+
+### [x] P-web1 · 新增 React 在线学习平台前端
+- 目标：提供现代化、响应式的在线学习体验，覆盖课程展示、内容播放、进度追踪与个人中心四大模块。
+- **改动**：
+  - 新增 `web/`（React 18 + TypeScript + Vite）：`src/components`（ui / layout / course / player）、`src/pages`、`src/store`（Auth / Progress / Theme Context）、`src/data`、`src/utils`、`src/styles`、`src/types`。
+  - 状态管理规范：全局状态收口到 3 个 Context；学习进度按 `userId` 分桶持久化到 `localStorage`，登录/登出自动切换。
+  - 路由守卫（`RequireAuth`）保护学习页与个人页；课程筛选与当前课时写入 URL（`searchParams`），可分享、可后退。
+  - 移动优先响应式布局（PC/平板/手机断点）+ 浅/深色双主题（CSS 变量）；零第三方 UI 库依赖，构建产物约 74KB（gzip）。
+  - 文档同步：`docs/WEB_FRONTEND.md`（及 `.en.md`）、README / CHANGELOG / PROJECT_STRUCTURE / ARCHITECTURE 均更新，`mkdocs.yml` 增加"前端"导航。
+- 验证：`npm run build` 通过（`tsc --noEmit` + `vite build`，73 模块），`npm run dev` 正常启动于 `http://localhost:5173`。
+
+---
+
 ## P0 · 文档与一致性（影响新人第一感受）
 
 ### [x] P1 · `.gitignore` 调整：让 `data/docs/` 进库

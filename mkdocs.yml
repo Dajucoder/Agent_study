@@ -126,6 +126,8 @@ nav:
   - 参考:
       - 术语表: GLOSSARY.md
       - 参考资料: REFERENCES.md
+  - 前端:
+      - 在线学习平台: WEB_FRONTEND.md
 
 # 插件
 plugins:

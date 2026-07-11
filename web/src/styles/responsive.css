@@ -1,0 +1,108 @@
+/* ============================================================
+   响应式：平板 (<=1024) 与 手机 (<=768) / 小屏 (<=480)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .courses-layout {
+    grid-template-columns: 240px 1fr;
+  }
+  .course-detail__body {
+    grid-template-columns: 1fr;
+  }
+  .enroll-card {
+    position: static;
+  }
+  .learn__layout {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-h: 58px;
+  }
+  .header__nav,
+  .header__search,
+  .header__auth,
+  .user-menu__name {
+    display: none;
+  }
+  .header__burger {
+    display: inline-flex;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+  .user-menu__trigger {
+    padding: 4px;
+  }
+
+  .courses-layout {
+    grid-template-columns: 1fr;
+  }
+  .courses-layout__sidebar {
+    display: none;
+  }
+  .course-toolbar__filter {
+    display: inline-flex;
+  }
+  .course-toolbar__count {
+    display: none;
+  }
+
+  .learn__layout {
+    grid-template-columns: 1fr;
+  }
+  .learn__sidebar {
+    position: static;
+    max-height: 320px;
+    order: 2;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .stat-cards {
+    grid-template-columns: 1fr;
+  }
+  .history-item {
+    flex-wrap: wrap;
+  }
+  .history-item__actions {
+    flex-direction: row;
+    width: 100%;
+  }
+  .history-item__actions .btn {
+    flex: 1;
+  }
+  .hero__stats {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .course-grid,
+  .cat-grid,
+  .continue-grid {
+    grid-template-columns: 1fr;
+  }
+  .lesson-view {
+    padding: 14px;
+  }
+  .lesson-view__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .lesson-view__nav {
+    width: 100%;
+  }
+  .lesson-view__nav .btn {
+    flex: 1;
+  }
+}
