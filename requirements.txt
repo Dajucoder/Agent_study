@@ -7,17 +7,17 @@
 # Python 3.10+；langchain 1.x 时代（langchain-classic 提供 0.x 的 Agent/Memory API）。
 
 # ---- 核心框架 ----
-langchain>=1.0
-langchain-classic>=1.0
-langchain-openai>=1.0
-langchain-community>=0.3
+langchain>=1.3.13
+langchain-classic>=1.0.8
+langchain-openai>=1.3.5
+langchain-community>=0.4.2
 
 # ---- 提示词与输出解析 ----
-langchain-core>=1.0
+langchain-core>=1.4.9
 pydantic>=2.6
 
 # ---- 文档切分与文本处理 ----
-langchain-text-splitters>=1.0
+langchain-text-splitters>=1.1.2
 
 # ---- 向量库（入门推荐 Chroma）----
 chromadb>=1.0
@@ -26,8 +26,8 @@ chromadb>=1.0
 langgraph>=0.3
 
 # ---- 嵌入与 OpenAI 客户端 ----
-openai>=1.30
-tiktoken>=0.7
+openai>=2.45.0
+tiktoken>=0.13.0
 
 # ---- 环境变量管理 ----
 python-dotenv>=1.0
